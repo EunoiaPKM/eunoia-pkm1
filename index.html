@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan SMPK PENABUR Kota Modern</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        /* Animated Background */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .float-reverse {
+            animation: floatReverse 8s ease-in-out infinite;
+        }
+        
+        /* Fade In Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .fade-in-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+        
+        .fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+        
+        /* Staggered Animation */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        
+        /* Enhanced Card Hover */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Dewey Cards with Enhanced Gradients */
+        .dewey-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dewey-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .dewey-card:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .dewey-card:nth-child(2n) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .dewey-card:nth-child(3n) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .dewey-card:nth-child(4n) {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        .dewey-card:nth-child(5n) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        .dewey-card:nth-child(6n) {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        .dewey-card:nth-child(7n) {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        .dewey-card:nth-child(8n) {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+        }
+        .dewey-card:nth-child(9n) {
+            background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+        }
+        .dewey-card:nth-child(10n) {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Rotating Animation */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotate-animation {
+            animation: rotate 20s linear infinite;
+        }
+        
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0,-30px,0); }
+            70% { transform: translate3d(0,-15px,0); }
+            90% { transform: translate3d(0,-4px,0); }
+        }
+        
+        .bounce-animation {
+            animation: bounce 2s ease infinite;
+        }
+        
+        /* Glow Effect */
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+        }
+        
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Shimmer Effect */
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200px 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        /* Scale Animation on Scroll */
+        .scale-in {
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+        
+        .scale-in.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        /* Button Hover Effects */
+        .btn-hover {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-hover:hover::before {
+            left: 100%;
+        }
+        
+        /* Loading Animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .spin-animation {
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-8">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <img src="https://lh3.googleusercontent.com/d/1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo SMPK PENABUR" class="w-14 h-14 sm:w-18 sm:h-18 object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg class=\'w-10 h-10 sm:w-12 sm:h-12 text-purple-600\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z\'/></svg>';">
+                    </div>
+                    <div class="min-w-0">
+                        <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold truncate">Perpustakaan Digital</h1>
+                        <p class="text-purple-100 text-sm sm:text-base truncate">SMPK PENABUR Kota Modern</p>
+                    </div>
+                </div>
+                <nav class="flex space-x-2 sm:space-x-4 lg:space-x-6">
+                    <button onclick="showSection('home')" class="nav-btn bg-white bg-opacity-20 px-3 sm:px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all text-sm sm:text-base">Home</button>
+                    <button onclick="showSection('catalog')" class="nav-btn bg-white bg-opacity-20 px-3 sm:px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all text-sm sm:text-base">Katalog</button>
+                    <button onclick="showSection('analytics')" class="nav-btn bg-white bg-opacity-20 px-3 sm:px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all text-sm sm:text-base">Analitik</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8">
+        <!-- Home Section -->
+        <section id="home" class="">
+            <!-- Hero Section -->
+            <div class="relative bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white rounded-3xl mb-12 overflow-hidden glow-effect">
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                
+                <!-- Animated Background Particles -->
+                <div class="absolute inset-0">
+                    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full opacity-30 float-animation"></div>
+                    <div class="absolute top-3/4 left-1/3 w-1 h-1 bg-yellow-300 rounded-full opacity-40 float-reverse"></div>
+                    <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-purple-300 rounded-full opacity-20 float-animation" style="animation-delay: 2s;"></div>
+                    <div class="absolute bottom-1/4 left-1/2 w-2 h-2 bg-blue-300 rounded-full opacity-30 float-reverse" style="animation-delay: 1s;"></div>
+                </div>
+                
+                <div class="relative px-8 py-16 text-center">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">
+                            Selamat Datang di<br>
+                            <span class="text-yellow-300 pulse-animation">Perpustakaan Digital</span>
+                        </h1>
+                        <p class="text-xl md:text-2xl mb-8 text-purple-100 fade-in-up stagger-1">
+                            SMPK PENABUR Kota Modern
+                        </p>
+                        <p class="text-lg mb-10 max-w-2xl mx-auto text-purple-50 fade-in-up stagger-2">
+                            Jelajahi ribuan koleksi buku digital, materi pembelajaran, dan sumber daya pendidikan yang tersedia 24/7 untuk mendukung perjalanan belajar Anda
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up stagger-3">
+                            <button onclick="showSection('catalog')" class="bg-yellow-400 text-purple-900 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-lg btn-hover bounce-animation">
+                                🔍 Jelajahi Katalog
+                            </button>
+                            <button onclick="showSection('analytics')" class="bg-white bg-opacity-20 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-opacity-30 transition-all border-2 border-white border-opacity-30 btn-hover">
+                                📊 Lihat Statistik
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Decorative elements -->
+                <div class="absolute top-10 left-10 text-6xl opacity-20 float-animation">📚</div>
+                <div class="absolute bottom-10 right-10 text-6xl opacity-20 float-reverse">🎓</div>
+                <div class="absolute top-1/2 left-20 text-4xl opacity-10 rotate-animation">✨</div>
+                <div class="absolute top-20 right-1/4 text-4xl opacity-10 pulse-animation">💡</div>
+                <div class="absolute bottom-1/4 left-1/3 text-3xl opacity-15 bounce-animation" style="animation-delay: 1s;">🌟</div>
+                <div class="absolute top-1/3 right-1/3 text-2xl opacity-20 float-animation" style="animation-delay: 3s;">🚀</div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
+                    <div class="text-3xl mb-2">📖</div>
+                    <div class="text-2xl font-bold text-gray-800">5,000+</div>
+                    <div class="text-gray-600 text-sm">Koleksi Buku</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
+                    <div class="text-3xl mb-2">👥</div>
+                    <div class="text-2xl font-bold text-gray-800">1,200+</div>
+                    <div class="text-gray-600 text-sm">Pengguna Aktif</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
+                    <div class="text-3xl mb-2">🏆</div>
+                    <div class="text-2xl font-bold text-gray-800">10</div>
+                    <div class="text-gray-600 text-sm">Kategori Utama</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
+                    <div class="text-3xl mb-2">⏰</div>
+                    <div class="text-2xl font-bold text-gray-800">24/7</div>
+                    <div class="text-gray-600 text-sm">Akses Online</div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Fitur Unggulan</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🔍</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Pencarian Mudah</h3>
+                        <p class="text-gray-600">Temukan buku yang Anda butuhkan dengan sistem pencarian yang canggih dan filter kategori</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">☁️</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Akses Google Drive</h3>
+                        <p class="text-gray-600">Semua koleksi tersimpan di Google Drive dengan pembagian folder sesuai klasifikasi Dewey Decimal untuk akses yang mudah</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Analitik Real-time</h3>
+                        <p class="text-gray-600">Pantau statistik penggunaan dan temukan koleksi yang paling populer di kalangan siswa</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Categories Preview -->
+            <div class="mb-12">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Kategori Populer</h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="bg-gradient-to-br from-purple-500 to-pink-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="showSection('catalog')">
+                        <div class="text-3xl mb-2">🔬</div>
+                        <div class="font-semibold">Sains</div>
+                        <div class="text-xs opacity-80">500-599</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-500 to-cyan-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="showSection('catalog')">
+                        <div class="text-3xl mb-2">🏛️</div>
+                        <div class="font-semibold">Sosial</div>
+                        <div class="text-xs opacity-80">300-399</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-500 to-teal-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="showSection('catalog')">
+                        <div class="text-3xl mb-2">📚</div>
+                        <div class="font-semibold">Sastra</div>
+                        <div class="text-xs opacity-80">800-899</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-500 to-red-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="showSection('catalog')">
+                        <div class="text-3xl mb-2">💻</div>
+                        <div class="font-semibold">Teknologi</div>
+                        <div class="text-xs opacity-80">000-099</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-pink-500 to-rose-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="showSection('catalog')">
+                        <div class="text-3xl mb-2">🎨</div>
+                        <div class="font-semibold">Seni</div>
+                        <div class="text-xs opacity-80">700-799</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Mulai Jelajahi Sekarang!</h2>
+                <p class="text-lg mb-6 opacity-90">Ribuan buku menanti untuk dibaca. Temukan pengetahuan baru hari ini.</p>
+                <button onclick="showSection('catalog')" class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+                    🚀 Mulai Eksplorasi
+                </button>
+            </div>
+        </section>
+
+        <!-- Catalog Section -->
+        <section id="catalog" class="hidden">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Katalog Perpustakaan</h2>
+                <div class="flex space-x-4">
+                    <input type="text" id="searchInput" placeholder="Cari kategori..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <button onclick="searchCatalog()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">Cari</button>
+                </div>
+            </div>
+            
+            <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Catalog items will be generated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="hidden">
+            <div class="flex justify-between items-center mb-6 sm:mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Dashboard Analitik</h2>
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <span class="text-sm text-gray-600 font-medium">Real-time</span>
+                </div>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="min-w-0 flex-1">
+                            <p class="text-gray-500 text-xs sm:text-sm truncate">Total Kunjungan</p>
+                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="totalVisits">0</p>
+                        </div>
+                        <div class="text-2xl sm:text-3xl ml-2">👥</div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="min-w-0 flex-1">
+                            <p class="text-gray-500 text-xs sm:text-sm truncate">Kunjungan Hari Ini</p>
+                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="todayVisits">0</p>
+                        </div>
+                        <div class="text-2xl sm:text-3xl ml-2">📅</div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="min-w-0 flex-1">
+                            <p class="text-gray-500 text-xs sm:text-sm truncate">Katalog Diakses</p>
+                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="catalogAccessed">0</p>
+                        </div>
+                        <div class="text-2xl sm:text-3xl ml-2">📖</div>
+                    </div>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <div class="min-w-0 flex-1">
+                            <p class="text-gray-500 text-xs sm:text-sm truncate">Rata-rata Harian</p>
+                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="dailyAverage">0</p>
+                        </div>
+                        <div class="text-2xl sm:text-3xl ml-2">📈</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4">Kunjungan 7 Hari Terakhir</h3>
+                    <div class="relative h-64 sm:h-80">
+                        <canvas id="visitsChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg sm:text-xl font-semibold mb-4">Katalog Paling Populer</h3>
+                    <div class="relative h-64 sm:h-80">
+                        <canvas id="popularChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Categories Table -->
+            <div class="bg-white rounded-xl shadow-lg mt-6 lg:mt-8 overflow-hidden">
+                <div class="p-4 sm:p-6 border-b border-gray-200">
+                    <h3 class="text-lg sm:text-xl font-semibold">Kategori Paling Sering Diakses</h3>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode</th>
+                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Akses</th>
+                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">%</th>
+                            </tr>
+                        </thead>
+                        <tbody id="popularTable" class="bg-white divide-y divide-gray-200">
+                            <!-- Table rows will be generated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Dewey Decimal Classification System
+        const deweyCategories = [
+            { code: '000-099', title: 'Ilmu Komputer & Informasi', description: 'Komputer, internet, dan teknologi informasi', driveUrl: 'https://drive.google.com/drive/folders/1sMejTAY3_UvWBeoT5v9QEJ7EiAjY0ah6' },
+            { code: '100-199', title: 'Filsafat & Psikologi', description: 'Pemikiran filosofis dan ilmu jiwa', driveUrl: 'https://drive.google.com/drive/folders/1krIJUvFjzkDDplXIuyzbbur55Seeewlu' },
+            { code: '200-299', title: 'Agama', description: 'Berbagai ajaran dan kepercayaan agama', driveUrl: 'https://drive.google.com/drive/folders/18hEM4JgXIhc64ZB62CAPbrgsByPAahbu' },
+            { code: '300-399', title: 'Ilmu Sosial', description: 'Sosiologi, politik, ekonomi, dan hukum', driveUrl: 'https://drive.google.com/drive/folders/1YSdbOXdL5uiFP9U_63SzOAiGrb5tZkkQ' },
+            { code: '400-499', title: 'Bahasa', description: 'Linguistik dan pembelajaran bahasa', driveUrl: 'https://drive.google.com/drive/folders/1HlkRe1iwewBDx-9glCmmnaY7raoRnX6C' },
+            { code: '500-599', title: 'Sains & Matematika', description: 'Ilmu pengetahuan alam dan matematika', driveUrl: 'https://drive.google.com/drive/folders/15jAyy-OxQl2TCEuC3fNYTmPFHagJtmj-' },
+            { code: '600-699', title: 'Teknologi & Ilmu Terapan', description: 'Teknik, kedokteran, dan pertanian', driveUrl: 'https://drive.google.com/drive/folders/11-XXkbJI85nYwAwWTzCVOrmmT2Dupihw' },
+            { code: '700-799', title: 'Seni & Rekreasi', description: 'Seni rupa, musik, olahraga, dan permainan', driveUrl: 'https://drive.google.com/drive/folders/1brVKIR4vHBEmcIeY7Jg5akMsNPuki116' },
+            { code: '800-899', title: 'Sastra', description: 'Karya sastra dan kritik sastra', driveUrl: 'https://drive.google.com/drive/folders/1cTAqHVVcMZhMVCOYFti1jk9to2Hxx0E_' },
+            { code: '900-999', title: 'Sejarah & Geografi', description: 'Sejarah dunia dan ilmu bumi', driveUrl: 'https://drive.google.com/drive/folders/1Jbf-L_CYmhpp9W-KMrx_MohIhBtoLfqJ' }
+        ];
+
+        // Analytics data - Real-time (Reset to zero)
+        let analyticsData = {
+            totalVisits: 0,
+            todayVisits: 0,
+            catalogAccessed: 0,
+            dailyAverage: 0,
+            weeklyVisits: [0, 0, 0, 0, 0, 0, 0],
+            popularCategories: []
+        };
+
+        // Real-time analytics variables
+        let realTimeInterval = null;
+        let isRealTimeActive = false;
+
+        // Initialize the application
+        function init() {
+            generateCatalog();
+            showSection('home');
+            updateAnalytics();
+            // Don't auto-track visit on page load
+        }
+
+        // Generate catalog grid
+        function generateCatalog() {
+            const catalogGrid = document.getElementById('catalogGrid');
+            catalogGrid.innerHTML = '';
+
+            deweyCategories.forEach((category, index) => {
+                const card = document.createElement('div');
+                card.className = 'dewey-card card-hover text-white p-6 rounded-xl shadow-lg cursor-pointer';
+                card.innerHTML = `
+                    <div class="text-3xl mb-4">${getEmoji(index)}</div>
+                    <h3 class="text-xl font-bold mb-2">${category.code}</h3>
+                    <h4 class="text-lg font-semibold mb-2">${category.title}</h4>
+                    <p class="text-sm opacity-90 mb-3">${category.description}</p>
+                    <div class="mt-4 mb-3">
+                        <div class="bg-white bg-opacity-20 p-2 rounded text-xs break-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">🔗 Link Google Drive:</span>
+                                <button onclick="copyLink('${category.driveUrl}', event)" class="bg-white bg-opacity-30 hover:bg-opacity-50 px-2 py-1 rounded text-xs transition-all">
+                                    📋 Copy
+                                </button>
+                            </div>
+                            <div class="text-xs opacity-80 cursor-pointer" onclick="copyLink('${category.driveUrl}', event)" title="Klik untuk copy link">
+                                ${category.driveUrl}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">📁 Google Drive</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                `;
+                card.onclick = () => openCatalog(category);
+                catalogGrid.appendChild(card);
+            });
+        }
+
+        // Get emoji for category
+        function getEmoji(index) {
+            const emojis = ['💻', '🧠', '🕊️', '🏛️', '🗣️', '🔬', '⚙️', '🎨', '📚', '🌍'];
+            return emojis[index] || '📖';
+        }
+
+        // Open catalog (redirect to actual Google Drive folders)
+        function openCatalog(category) {
+            trackCatalogAccess(category);
+            
+            // Show confirmation modal
+            const confirmed = confirm(`Anda akan diarahkan ke Google Drive untuk mengakses koleksi "${category.title}" (${category.code}). Lanjutkan?`);
+            
+            if (confirmed) {
+                // Use the specific drive URL for this category
+                const driveUrl = category.driveUrl;
+                
+                // Create a temporary link element and click it
+                const link = document.createElement('a');
+                link.href = driveUrl;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                
+                // Add to DOM temporarily
+                document.body.appendChild(link);
+                
+                // Click the link
+                link.click();
+                
+                // Remove from DOM
+                document.body.removeChild(link);
+                
+                // Show success message
+                setTimeout(() => {
+                    showCopyNotification('Google Drive dibuka di tab baru!');
+                }, 500);
+            }
+        }
+
+        // Track catalog access
+        function trackCatalogAccess(category) {
+            analyticsData.catalogAccessed++;
+            
+            // Update popular categories
+            const existing = analyticsData.popularCategories.find(cat => cat.code === category.code);
+            if (existing) {
+                existing.visits++;
+            } else {
+                analyticsData.popularCategories.push({
+                    code: category.code,
+                    title: category.title,
+                    visits: 1,
+                    percentage: 0
+                });
+            }
+            
+            // Recalculate percentages
+            const total = analyticsData.popularCategories.reduce((sum, cat) => sum + cat.visits, 0);
+            analyticsData.popularCategories.forEach(cat => {
+                cat.percentage = ((cat.visits / total) * 100).toFixed(1);
+            });
+            
+            // Sort by visits
+            analyticsData.popularCategories.sort((a, b) => b.visits - a.visits);
+            
+            updateAnalytics();
+        }
+
+        // Track website visit
+        function trackVisit() {
+            analyticsData.totalVisits++;
+            analyticsData.todayVisits++;
+            analyticsData.dailyAverage = Math.round(analyticsData.totalVisits / 30);
+            
+            // Update today's visits in weekly data
+            analyticsData.weeklyVisits[6] = analyticsData.todayVisits;
+        }
+
+        // Search catalog
+        function searchCatalog() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const catalogGrid = document.getElementById('catalogGrid');
+            const cards = catalogGrid.children;
+
+            for (let card of cards) {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        }
+
+        // Real-time analytics functions
+        function startRealTimeAnalytics() {
+            if (isRealTimeActive) return;
+            
+            isRealTimeActive = true;
+            realTimeInterval = setInterval(() => {
+                // Simulate real-time data updates
+                updateRealTimeData();
+                updateAnalytics();
+                updateCharts();
+            }, 2000); // Update every 2 seconds
+        }
+
+        function stopRealTimeAnalytics() {
+            if (realTimeInterval) {
+                clearInterval(realTimeInterval);
+                realTimeInterval = null;
+                isRealTimeActive = false;
+            }
+        }
+
+        function updateRealTimeData() {
+            // Real-time analytics now only updates from actual user interactions
+            // No more automatic simulation - data only changes when users actually click catalog links
+        }
+
+        function updateCharts() {
+            if (visitsChart) {
+                visitsChart.data.datasets[0].data = [...analyticsData.weeklyVisits];
+                visitsChart.update('none'); // No animation for real-time
+            }
+            
+            if (popularChart) {
+                popularChart.data.labels = analyticsData.popularCategories.slice(0, 5).map(cat => cat.code);
+                popularChart.data.datasets[0].data = analyticsData.popularCategories.slice(0, 5).map(cat => cat.visits);
+                popularChart.update('none'); // No animation for real-time
+            }
+        }
+
+        // Show section
+        function showSection(sectionName) {
+            // Hide all sections
+            document.getElementById('home').classList.add('hidden');
+            document.getElementById('catalog').classList.add('hidden');
+            document.getElementById('analytics').classList.add('hidden');
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'bg-opacity-30');
+                btn.classList.add('bg-white', 'bg-opacity-20');
+            });
+            
+            // Highlight active nav button
+            const activeBtn = document.querySelector(`button[onclick="showSection('${sectionName}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'bg-opacity-20');
+                activeBtn.classList.add('bg-white', 'bg-opacity-30');
+            }
+            
+            if (sectionName === 'analytics') {
+                setTimeout(() => {
+                    initCharts();
+                    startRealTimeAnalytics();
+                }, 100);
+            } else {
+                stopRealTimeAnalytics();
+            }
+        }
+
+        // Update analytics display with animation
+        function updateAnalytics() {
+            // Animate number changes
+            animateNumber('totalVisits', analyticsData.totalVisits);
+            animateNumber('todayVisits', analyticsData.todayVisits);
+            animateNumber('catalogAccessed', analyticsData.catalogAccessed);
+            animateNumber('dailyAverage', analyticsData.dailyAverage);
+            
+            updatePopularTable();
+        }
+
+        // Animate number changes
+        function animateNumber(elementId, newValue) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseInt(element.textContent.replace(/,/g, '')) || 0;
+            
+            if (currentValue !== newValue) {
+                element.style.transform = 'scale(1.1)';
+                element.style.color = '#10B981'; // Green color for updates
+                
+                setTimeout(() => {
+                    element.textContent = newValue.toLocaleString();
+                    element.style.transform = 'scale(1)';
+                    element.style.color = '';
+                }, 200);
+            }
+        }
+
+        // Update popular categories table
+        function updatePopularTable() {
+            const tableBody = document.getElementById('popularTable');
+            tableBody.innerHTML = '';
+            
+            analyticsData.popularCategories.slice(0, 10).forEach((category, index) => {
+                const row = document.createElement('tr');
+                row.className = index % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+                row.innerHTML = `
+                    <td class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-medium text-gray-900">${category.code}</td>
+                    <td class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-900">
+                        <div class="truncate max-w-32 sm:max-w-none" title="${category.title}">${category.title}</div>
+                    </td>
+                    <td class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-900">${category.visits}</td>
+                    <td class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-gray-900">${category.percentage}%</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize charts
+        let visitsChart = null;
+        let popularChart = null;
+        
+        function initCharts() {
+            // Destroy existing charts if they exist
+            if (visitsChart) {
+                visitsChart.destroy();
+            }
+            if (popularChart) {
+                popularChart.destroy();
+            }
+            
+            // Visits chart
+            const visitsCtx = document.getElementById('visitsChart');
+            if (visitsCtx) {
+                visitsChart = new Chart(visitsCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                        datasets: [{
+                            label: 'Kunjungan',
+                            data: analyticsData.weeklyVisits,
+                            borderColor: '#8B5CF6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Popular categories chart
+            const popularCtx = document.getElementById('popularChart');
+            if (popularCtx) {
+                popularChart = new Chart(popularCtx.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: analyticsData.popularCategories.slice(0, 5).map(cat => cat.code),
+                        datasets: [{
+                            data: analyticsData.popularCategories.slice(0, 5).map(cat => cat.visits),
+                            backgroundColor: [
+                                '#8B5CF6',
+                                '#06B6D4',
+                                '#10B981',
+                                '#F59E0B',
+                                '#EF4444'
+                            ]
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Copy link function
+        function copyLink(url, event) {
+            event.stopPropagation(); // Prevent card click
+            
+            // Try to copy to clipboard
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showCopyNotification('Link berhasil dicopy!');
+                }).catch(() => {
+                    fallbackCopyTextToClipboard(url);
+                });
+            } else {
+                fallbackCopyTextToClipboard(url);
+            }
+        }
+
+        // Fallback copy function for older browsers
+        function fallbackCopyTextToClipboard(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyNotification('Link berhasil dicopy!');
+            } catch (err) {
+                showCopyNotification('Gagal copy link. Silakan copy manual.');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        // Show copy notification
+        function showCopyNotification(message) {
+            // Remove existing notification
+            const existing = document.getElementById('copyNotification');
+            if (existing) {
+                existing.remove();
+            }
+            
+            // Create notification
+            const notification = document.createElement('div');
+            notification.id = 'copyNotification';
+            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 transition-all transform translate-x-0';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('translate-x-full', 'opacity-0');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Scroll Animation Observer
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with scale-in class
+            document.querySelectorAll('.scale-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Add loading animation to buttons
+        function addLoadingAnimation(button) {
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="spin-animation inline-block">⏳</span> Loading...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 1000);
+        }
+
+        // Enhanced button clicks with loading animation
+        function enhancedShowSection(sectionName) {
+            const button = event.target;
+            addLoadingAnimation(button);
+            
+            setTimeout(() => {
+                showSection(sectionName);
+            }, 500);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            init();
+            initScrollAnimations();
+            
+            // Add staggered animation to elements on load
+            setTimeout(() => {
+                document.querySelectorAll('.scale-in').forEach((el, index) => {
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, index * 100);
+                });
+            }, 300);
+        });
+
+        // Search on Enter key
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && document.activeElement.id === 'searchInput') {
+                searchCatalog();
+            }
+        });
+
+        // Add smooth scrolling
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+</html>
