@@ -1049,5 +1049,59 @@
         // Add smooth scrolling
         document.documentElement.style.scrollBehavior = 'smooth';
     </script>
+    <!-- === Log pengunjung dan katalog === -->
+<script>
+// === LOGGING ===
+// Ganti URL di bawah dengan URL Web App kamu
+const LOG_ENDPOINT = "https://script.google.com/macros/s/AKfycbwrOyCCfnolFsBnaSif6Kyd6k-bwgkopC_4Ywwz2zRARjx8enn39p4iE8XdaZ7BaNW1/exec";
+
+// Kirim log ke Google Apps Script
+function sendLog(payload) {
+  try {
+    const body = JSON.stringify(payload);
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      navigator.sendBeacon(LOG_ENDPOINT, blob);
+      return;
+    }
+    fetch(LOG_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body
+    });
+  } catch (e) {
+    console.error('sendLog error', e);
+  }
+}
+
+// Catat kunjungan halaman
+function recordPageView() {
+  const payload = {
+    event: 'page_view',
+    page: location.pathname + location.search,
+    referrer: document.referrer || null,
+    userAgent: navigator.userAgent || null,
+    timestamp: new Date().toISOString()
+  };
+  sendLog(payload);
+}
+
+// Catat katalog yang dibuka
+function trackCatalogAccess(category) {
+  const payload = {
+    event: 'catalog_open',
+    code: category.code,
+    title: category.title,
+    driveUrl: category.driveUrl,
+    page: location.pathname + location.search,
+    userAgent: navigator.userAgent || null,
+    timestamp: new Date().toISOString()
+  };
+  sendLog(payload);
+}
+
+// Jalankan saat halaman selesai dimuat
+document.addEventListener('DOMContentLoaded', recordPageView);
+</script>
 </body>
 </html>
