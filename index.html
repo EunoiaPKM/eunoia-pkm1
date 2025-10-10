@@ -266,80 +266,10 @@
             border: 1px solid rgba(255,255,255,0.2);
         }
         
-        /* Dark Mode Styles */
-        .dark {
-            color-scheme: dark;
-        }
-        
-        .dark .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0f172a 100%);
-        }
-        
-        .dark .modern-nav {
-            background: rgba(17, 24, 39, 0.95);
-            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
-        }
-        
-        .dark .glassmorphism {
-            background: rgba(17, 24, 39, 0.3);
-            border: 1px solid rgba(75, 85, 99, 0.3);
-        }
-        
-        .dark .card-modern {
-            background: rgba(31, 41, 55, 0.95);
-            border: 1px solid rgba(75, 85, 99, 0.3);
-        }
-        
-        .dark .card-modern:hover {
-            background: rgba(31, 41, 55, 1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        
-        .dark .category-card {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-        }
-        
-        .dark .neon-glow {
-            box-shadow: 0 0 20px rgba(30, 64, 175, 0.4);
-        }
-        
-        .dark .neon-glow:hover {
-            box-shadow: 0 0 40px rgba(30, 64, 175, 0.8);
-        }
-        
-        .dark .pulse-glow {
-            animation: pulseGlowDark 3s ease-in-out infinite;
-        }
-        
-        @keyframes pulseGlowDark {
-            0%, 100% { box-shadow: 0 0 30px rgba(30, 64, 175, 0.3); }
-            50% { box-shadow: 0 0 60px rgba(30, 64, 175, 0.6); }
-        }
-        
-        .dark .stats-card {
-            background: linear-gradient(135deg, rgba(31, 41, 55, 0.3) 0%, rgba(17, 24, 39, 0.2) 100%);
-            border: 1px solid rgba(75, 85, 99, 0.3);
-        }
-        
-        /* Additional Dark Mode Fixes */
-        .dark .glow-on-hover:hover {
-            box-shadow: 0 0 30px rgba(30, 64, 175, 0.6);
-        }
-        
-        .dark .category-card::before {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        }
-        
-        .dark .btn-modern::before {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        }
-        
-        .dark .glassmorphism:hover {
-            background: rgba(17, 24, 39, 0.4);
-        }
+
     </style>
 </head>
-<body class="h-full bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+<body class="h-full bg-gray-50">
     <!-- Navigation -->
     <nav class="modern-nav shadow-2xl sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -354,29 +284,16 @@
                         </div>
                         <div>
                             <div class="text-xl font-bold gradient-text">Perpustakaan Digital</div>
-                            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">Universitas Nusantara</div>
+                            <div class="text-xs text-gray-500 font-medium">Universitas Nusantara</div>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="flex items-center space-x-4">
                         <button onclick="showHome()" class="nav-btn btn-modern text-white px-6 py-3 rounded-2xl text-sm font-semibold shadow-lg">Home</button>
-                        <button onclick="showCatalog()" class="nav-btn text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 hover:bg-white dark:hover:bg-gray-700 hover:shadow-lg">Katalog</button>
+                        <button onclick="showCatalog()" class="nav-btn text-gray-600 hover:text-indigo-600 px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 hover:bg-white hover:shadow-lg">Katalog</button>
                         
-                        <!-- Dark Mode Toggle -->
-                        <div class="flex items-center space-x-3">
-                            <span class="text-sm font-medium text-gray-600 dark:text-gray-300">🌞</span>
-                            <button onclick="toggleDarkMode()" class="relative inline-flex h-8 w-14 items-center rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-lg">
-                                <span class="sr-only">Toggle dark mode</span>
-                                <span id="toggleCircle" class="inline-block h-6 w-6 transform rounded-full bg-white dark:bg-indigo-500 transition-transform duration-300 translate-x-1 dark:translate-x-7 shadow-lg">
-                                    <span class="flex items-center justify-center h-full w-full text-xs">
-                                        <span id="toggleIcon" class="dark:hidden">☀️</span>
-                                        <span id="toggleIconDark" class="hidden dark:block">🌙</span>
-                                    </span>
-                                </span>
-                            </button>
-                            <span class="text-sm font-medium text-gray-600 dark:text-gray-300">🌙</span>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -425,7 +342,7 @@
         </div>
 
         <!-- Features Section -->
-        <div class="py-20 bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 relative overflow-hidden transition-colors duration-300">
+        <div class="py-20 bg-gradient-to-br from-gray-50 via-white to-indigo-50 relative overflow-hidden">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-5">
                 <div class="absolute top-10 left-10 w-72 h-72 bg-indigo-500 rounded-full blur-3xl"></div>
@@ -438,7 +355,7 @@
                         <span class="bg-gradient-to-r from-blue-800 to-blue-900 text-white px-6 py-2 rounded-full text-sm font-semibold">✨ Fitur Unggulan</span>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-black gradient-text mb-6">Pengalaman Membaca Terdepan</h2>
-                    <p class="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto font-light">Teknologi canggih untuk memberikan pengalaman membaca digital yang tak terlupakan</p>
+                    <p class="text-gray-600 text-xl max-w-2xl mx-auto font-light">Teknologi canggih untuk memberikan pengalaman membaca digital yang tak terlupakan</p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
@@ -447,7 +364,7 @@
                             <span class="text-3xl">🔍</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 gradient-text">Pencarian AI</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Temukan buku dengan teknologi AI yang memahami preferensi dan kebutuhan membaca Anda</p>
+                        <p class="text-gray-600 leading-relaxed">Temukan buku dengan teknologi AI yang memahami preferensi dan kebutuhan membaca Anda</p>
                         <div class="mt-6 w-full h-1 bg-gradient-to-r from-blue-700 to-blue-800 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     </div>
                     
@@ -456,7 +373,7 @@
                             <span class="text-3xl">📱</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 gradient-text">Multi-Platform</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Sinkronisasi otomatis di semua perangkat dengan cloud storage yang aman dan cepat</p>
+                        <p class="text-gray-600 leading-relaxed">Sinkronisasi otomatis di semua perangkat dengan cloud storage yang aman dan cepat</p>
                         <div class="mt-6 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     </div>
                     
@@ -465,7 +382,7 @@
                             <span class="text-3xl">📚</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 gradient-text">Koleksi Premium</h3>
-                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Akses ke ribuan buku berkualitas tinggi dengan rekomendasi personal yang cerdas</p>
+                        <p class="text-gray-600 leading-relaxed">Akses ke ribuan buku berkualitas tinggi dengan rekomendasi personal yang cerdas</p>
                         <div class="mt-6 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     </div>
                 </div>
@@ -473,7 +390,7 @@
         </div>
 
         <!-- Popular Categories Section -->
-        <div class="py-20 bg-white dark:bg-gray-800 relative overflow-hidden transition-colors duration-300">
+        <div class="py-20 bg-white relative overflow-hidden">
             <!-- Animated Background -->
             <div class="absolute inset-0 opacity-5">
                 <div class="absolute top-0 left-1/4 w-64 h-64 bg-red-400 rounded-full blur-3xl animate-pulse"></div>
@@ -486,7 +403,7 @@
                         <span class="bg-gradient-to-r from-blue-700 to-blue-800 text-white px-6 py-2 rounded-full text-sm font-semibold">🔥 Trending</span>
                     </div>
                     <h2 class="text-4xl md:text-5xl font-black gradient-text mb-6">Kategori Terpopuler</h2>
-                    <p class="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto font-light">Jelajahi kategori yang paling diminati oleh ribuan pembaca</p>
+                    <p class="text-gray-600 text-xl max-w-2xl mx-auto font-light">Jelajahi kategori yang paling diminati oleh ribuan pembaca</p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -530,16 +447,16 @@
         </div>
 
         <!-- Call to Action Section -->
-        <div class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="py-16 bg-white">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Mulai Jelajahi Sekarang</h2>
-                <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">Temukan ribuan buku digital berkualitas tinggi yang siap menemani perjalanan belajar Anda. Akses gratis, kapan saja, dimana saja!</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Mulai Jelajahi Sekarang</h2>
+                <p class="text-gray-600 text-lg mb-8">Temukan ribuan buku digital berkualitas tinggi yang siap menemani perjalanan belajar Anda. Akses gratis, kapan saja, dimana saja!</p>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button onclick="showCatalog()" class="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg bounce-in stagger-1 glow-on-hover">
                         📚 Lihat Semua Katalog
                     </button>
-                    <button onclick="showBooks('000')" class="bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 border-2 border-indigo-600 dark:border-indigo-400 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-50 dark:hover:bg-gray-600 transition duration-300 bounce-in stagger-2 glow-on-hover">
+                    <button onclick="showBooks('000')" class="bg-white text-indigo-600 border-2 border-indigo-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-50 transition duration-300 bounce-in stagger-2 glow-on-hover">
                         🔥 Buku Populer
                     </button>
                 </div>
@@ -598,14 +515,14 @@
     </div>
 
     <!-- Catalog Page -->
-    <div id="catalogPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 min-h-screen transition-colors duration-300">
+    <div id="catalogPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="text-center mb-16">
                 <div class="inline-block mb-6">
                     <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg">📚 Sistem Dewey</span>
                 </div>
                 <h1 class="text-5xl md:text-6xl font-black gradient-text mb-6">Katalog Perpustakaan</h1>
-                <p class="text-gray-600 dark:text-gray-300 text-xl max-w-3xl mx-auto font-light leading-relaxed">Temukan koleksi buku berdasarkan Sistem Klasifikasi Dewey yang terorganisir dengan sempurna</p>
+                <p class="text-gray-600 text-xl max-w-3xl mx-auto font-light leading-relaxed">Temukan koleksi buku berdasarkan Sistem Klasifikasi Dewey yang terorganisir dengan sempurna</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -703,14 +620,14 @@
     </div>
 
     <!-- Books List Page -->
-    <div id="booksPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 min-h-screen transition-colors duration-300">
+    <div id="booksPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="mb-12">
-                <button onclick="showCatalog()" class="glassmorphism text-indigo-600 dark:text-indigo-400 hover:text-white hover:bg-indigo-600 px-6 py-3 rounded-2xl mb-6 flex items-center font-semibold transition-all duration-300 shadow-lg">
+                <button onclick="showCatalog()" class="glassmorphism text-indigo-600 hover:text-white hover:bg-indigo-600 px-6 py-3 rounded-2xl mb-6 flex items-center font-semibold transition-all duration-300 shadow-lg">
                     ← Kembali ke Katalog
                 </button>
                 <h1 id="categoryTitle" class="text-4xl md:text-5xl font-black gradient-text mb-4"></h1>
-                <p class="text-gray-600 dark:text-gray-300 text-xl font-light">Pilih buku yang ingin Anda baca dan mulai petualangan literasi</p>
+                <p class="text-gray-600 text-xl font-light">Pilih buku yang ingin Anda baca dan mulai petualangan literasi</p>
             </div>
             
             <div id="booksList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -805,10 +722,10 @@
             // Update nav buttons with modern styling
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('btn-modern', 'text-white');
-                btn.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
+                btn.classList.add('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
             });
             event.target.classList.add('btn-modern', 'text-white');
-            event.target.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
+            event.target.classList.remove('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
         }
 
         function showCatalog() {
@@ -819,14 +736,14 @@
             // Update nav buttons with modern styling
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('btn-modern', 'text-white');
-                btn.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
+                btn.classList.add('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
             });
             
             // Find and highlight catalog button
             const catalogBtn = Array.from(document.querySelectorAll('.nav-btn')).find(btn => btn.textContent === 'Katalog');
             if (catalogBtn) {
                 catalogBtn.classList.add('btn-modern', 'text-white');
-                catalogBtn.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
+                catalogBtn.classList.remove('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
             }
         }
 
@@ -852,8 +769,8 @@
                             </div>
                         </div>
                         <h3 class="text-2xl font-bold gradient-text mb-3 leading-tight">${book.title}</h3>
-                        <p class="text-indigo-600 dark:text-indigo-400 font-semibold mb-4 text-lg">oleh ${book.author}</p>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-light">${book.description}</p>
+                        <p class="text-indigo-600 font-semibold mb-4 text-lg">oleh ${book.author}</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed font-light">${book.description}</p>
                         <button onclick="openFlipbook('${book.flipbook}')" class="w-full btn-modern text-white px-6 py-4 rounded-2xl font-bold shadow-xl neon-glow">
                             ✨ Baca Sekarang
                         </button>
@@ -866,33 +783,8 @@
             window.open(url, '_blank', 'noopener,noreferrer');
         }
 
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            const html = document.documentElement;
-            const isDark = html.classList.contains('dark');
-            
-            if (isDark) {
-                html.classList.remove('dark');
-                localStorage.setItem('darkMode', 'false');
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('darkMode', 'true');
-            }
-        }
-
-        // Initialize Dark Mode from localStorage
-        function initializeDarkMode() {
-            const savedMode = localStorage.getItem('darkMode');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedMode === 'true' || (savedMode === null && prefersDark)) {
-                document.documentElement.classList.add('dark');
-            }
-        }
-
-        // Initialize with home page and dark mode
-        initializeDarkMode();
+        // Initialize with home page
         showHome();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98c37779317b4ad6',t:'MTc2MDA3MTUxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98c3c41e5287283c',t:'MTc2MDA3NDY0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
