@@ -1,21 +1,163 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan SMPK PENABUR Kota Modern</title>
+    <title>Perpustakaan Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         body {
             box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
         
-        /* Animated Background */
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #1d4ed8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .card-modern {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .card-modern:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(30, 64, 175, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .neon-glow:hover {
+            box-shadow: 0 0 40px rgba(30, 64, 175, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 1.2s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(30, 64, 175, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(30, 64, 175, 0.6); }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        
+        .rotate-on-hover {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .rotate-on-hover:hover {
+            transform: rotate(3deg) scale(1.05);
+        }
+        
+        .scale-on-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .scale-on-hover:hover {
+            transform: scale(1.2);
+        }
+        
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-on-hover:hover {
+            box-shadow: 0 0 30px rgba(30, 64, 175, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .book-spine {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
         }
         
         @keyframes gradientShift {
@@ -24,86 +166,12 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes floatReverse {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(20px); }
-        }
-        
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .float-reverse {
-            animation: floatReverse 8s ease-in-out infinite;
-        }
-        
-        /* Fade In Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        .fade-in-left {
-            animation: fadeInLeft 0.8s ease-out forwards;
-        }
-        
-        .fade-in-right {
-            animation: fadeInRight 0.8s ease-out forwards;
-        }
-        
-        /* Staggered Animation */
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        .stagger-5 { animation-delay: 0.5s; }
-        
-        /* Enhanced Card Hover */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .category-card {
             position: relative;
             overflow: hidden;
         }
         
-        .card-hover::before {
+        .category-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -114,878 +182,717 @@
             transition: left 0.5s;
         }
         
-        .card-hover:hover::before {
+        .category-card:hover::before {
             left: 100%;
         }
         
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        .modern-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* Dewey Cards with Enhanced Gradients */
-        .dewey-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .dewey-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-        
-        .dewey-card:hover::after {
-            transform: translateX(100%);
-        }
-        
-        .dewey-card:nth-child(2n) {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
-        .dewey-card:nth-child(3n) {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-        }
-        .dewey-card:nth-child(4n) {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-        }
-        .dewey-card:nth-child(5n) {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-        }
-        .dewey-card:nth-child(6n) {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-        }
-        .dewey-card:nth-child(7n) {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-        }
-        .dewey-card:nth-child(8n) {
-            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-        }
-        .dewey-card:nth-child(9n) {
-            background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
-        }
-        .dewey-card:nth-child(10n) {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-        }
-        
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        /* Rotating Animation */
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .rotate-animation {
-            animation: rotate 20s linear infinite;
-        }
-        
-        /* Bounce Animation */
-        @keyframes bounce {
-            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
-            40%, 43% { transform: translate3d(0,-30px,0); }
-            70% { transform: translate3d(0,-15px,0); }
-            90% { transform: translate3d(0,-4px,0); }
-        }
-        
-        .bounce-animation {
-            animation: bounce 2s ease infinite;
-        }
-        
-        /* Glow Effect */
-        .glow-effect {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-            transition: box-shadow 0.3s ease;
-        }
-        
-        .glow-effect:hover {
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
-        }
-        
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Shimmer Effect */
-        @keyframes shimmer {
-            0% { background-position: -200px 0; }
-            100% { background-position: calc(200px + 100%) 0; }
-        }
-        
-        .shimmer {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200px 100%;
-            animation: shimmer 2s infinite;
-        }
-        
-        /* Scale Animation on Scroll */
-        .scale-in {
-            transform: scale(0.8);
-            opacity: 0;
-            transition: all 0.6s ease-out;
-        }
-        
-        .scale-in.visible {
-            transform: scale(1);
-            opacity: 1;
-        }
-        
-        /* Button Hover Effects */
-        .btn-hover {
+        .btn-modern {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            border: none;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
         }
         
-        .btn-hover::before {
+        .btn-modern::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s;
         }
         
-        .btn-hover:hover::before {
+        .btn-modern:hover::before {
             left: 100%;
         }
         
-        /* Loading Animation */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .btn-yellow {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+            color: white;
         }
         
-        .spin-animation {
-            animation: spin 1s linear infinite;
+        .btn-yellow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-yellow:hover::before {
+            left: 100%;
+        }
+        
+        .btn-yellow:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 50px rgba(239, 68, 68, 0.6);
+        }
+        
+        .pulse-button {
+            animation: pulseButton 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseButton {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 50px rgba(239, 68, 68, 0.6);
+            }
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Dark Mode Styles */
+        .dark {
+            color-scheme: dark;
+        }
+        
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #0f172a 100%);
+        }
+        
+        .dark .modern-nav {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .dark .glassmorphism {
+            background: rgba(17, 24, 39, 0.3);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .dark .card-modern {
+            background: rgba(31, 41, 55, 0.95);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .dark .card-modern:hover {
+            background: rgba(31, 41, 55, 1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .dark .category-card {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark .neon-glow {
+            box-shadow: 0 0 20px rgba(30, 64, 175, 0.4);
+        }
+        
+        .dark .neon-glow:hover {
+            box-shadow: 0 0 40px rgba(30, 64, 175, 0.8);
+        }
+        
+        .dark .pulse-glow {
+            animation: pulseGlowDark 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlowDark {
+            0%, 100% { box-shadow: 0 0 30px rgba(30, 64, 175, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(30, 64, 175, 0.6); }
+        }
+        
+        .dark .stats-card {
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.3) 0%, rgba(17, 24, 39, 0.2) 100%);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        /* Additional Dark Mode Fixes */
+        .dark .glow-on-hover:hover {
+            box-shadow: 0 0 30px rgba(30, 64, 175, 0.6);
+        }
+        
+        .dark .category-card::before {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+        
+        .dark .btn-modern::before {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+        
+        .dark .glassmorphism:hover {
+            background: rgba(17, 24, 39, 0.4);
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <header class="gradient-bg text-white shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-8">
-            <div class="flex items-center justify-between flex-wrap gap-4">
-                <div class="flex items-center space-x-3 sm:space-x-4 min-w-0 flex-1">
-                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-full flex 
-items-center justify-center flex-shrink-0 overflow-hidden">
-                        <img src="https://lh3.googleusercontent.com/d/1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo SMPK PENABUR" class="w-14 h-14 sm:w-18 sm:h-18 object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<svg class=\'w-10 h-10 sm:w-12 sm:h-12 text-purple-600\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z\'/></svg>';">
+<body class="h-full bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="modern-nav shadow-2xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-lg">
+                            <img src="https://drive.google.com/uc?export=view&id=1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo Perpustakaan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-800 to-blue-900 rounded-2xl flex items-center justify-center shadow-lg" style="display: none;">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xl font-bold gradient-text">Perpustakaan Digital</div>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 font-medium">Universitas Nusantara</div>
+                        </div>
                     </div>
-              
-            <div class="min-w-0">
-                        <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold truncate">Perpustakaan Digital</h1>
-                        <p class="text-purple-100 text-sm sm:text-base truncate">SMPK PENABUR Kota Modern</p>
-                    </div>
-            
                 </div>
-                <nav class="flex space-x-2 sm:space-x-4 lg:space-x-6">
-                    <button onclick="enhancedShowSection('home')" class="nav-btn bg-white bg-opacity-20 px-3 sm:px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all text-sm sm:text-base">Home</button>
-                    <button onclick="enhancedShowSection('catalog')" class="nav-btn bg-white bg-opacity-20 px-3 sm:px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all text-sm sm:text-base">Katalog</button>
-            
-                    <button onclick="enhancedShowSection('analytics')" class="nav-btn bg-white bg-opacity-20 px-3 sm:px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all text-sm sm:text-base">Analitik</button>
-                </nav>
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-4">
+                        <button onclick="showHome()" class="nav-btn btn-modern text-white px-6 py-3 rounded-2xl text-sm font-semibold shadow-lg">Home</button>
+                        <button onclick="showCatalog()" class="nav-btn text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 hover:bg-white dark:hover:bg-gray-700 hover:shadow-lg">Katalog</button>
+                        
+                        <!-- Dark Mode Toggle -->
+                        <div class="flex items-center space-x-3">
+                            <span class="text-sm font-medium text-gray-600 dark:text-gray-300">🌞</span>
+                            <button onclick="toggleDarkMode()" class="relative inline-flex h-8 w-14 items-center rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 shadow-lg">
+                                <span class="sr-only">Toggle dark mode</span>
+                                <span id="toggleCircle" class="inline-block h-6 w-6 transform rounded-full bg-white dark:bg-indigo-500 transition-transform duration-300 translate-x-1 dark:translate-x-7 shadow-lg">
+                                    <span class="flex items-center justify-center h-full w-full text-xs">
+                                        <span id="toggleIcon" class="dark:hidden">☀️</span>
+                                        <span id="toggleIconDark" class="hidden dark:block">🌙</span>
+                                    </span>
+                                </span>
+                            </button>
+                            <span class="text-sm font-medium text-gray-600 dark:text-gray-300">🌙</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="container mx-auto px-6 py-8">
-        <section id="home" class="">
-    
-            <div class="relative bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white rounded-3xl mb-12 overflow-hidden glow-effect">
-                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-                
-                <div class="absolute inset-0">
-                    <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full opacity-30 float-animation"></div>
-                    <div class="absolute top-3/4 left-1/3 w-1 h-1 bg-yellow-300 rounded-full opacity-40 float-reverse"></div>
-                    <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-purple-300 rounded-full opacity-20 float-animation" style="animation-delay: 2s;"></div>
-    
-                    <div class="absolute bottom-1/4 left-1/2 w-2 h-2 bg-blue-300 rounded-full opacity-30 float-reverse" style="animation-delay: 1s;"></div>
-                </div>
-                
-                <div class="relative px-8 py-16 text-center">
-                    <div 
-class="max-w-4xl mx-auto">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in-up">
-                            Selamat Datang di<br>
-                            <span class="text-yellow-300 pulse-animation">Perpustakaan Digital</span>
-         
-                        </h1>
-                        <p class="text-xl md:text-2xl mb-8 text-purple-100 fade-in-up stagger-1">
-                            SMPK PENABUR Kota Modern
+    <!-- Home Page -->
+    <div id="homePage" class="fade-in">
+        <!-- Hero Section -->
+        <div class="hero-gradient text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="text-center relative z-10">
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-10 -left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full blur-xl float stagger-1"></div>
+                    <div class="absolute -top-5 -right-5 w-16 h-16 bg-pink-300 bg-opacity-20 rounded-full blur-lg float stagger-2"></div>
+                    <div class="absolute top-20 left-1/4 w-12 h-12 bg-yellow-300 bg-opacity-15 rounded-full blur-md float stagger-3"></div>
+                    
+                    <!-- Main Hero Content -->
+                    <div class="glassmorphism rounded-3xl p-8 md:p-16 max-w-5xl mx-auto fade-in pulse-glow">
+                        <div class="mb-8">
+                            <div class="inline-flex items-center justify-center w-24 h-24 glassmorphism rounded-3xl mb-6 bounce-in float">
+                                <span class="text-4xl">📚</span>
+                            </div>
+                        </div>
                         
-</p>
-                        <p class="text-lg mb-10 max-w-2xl mx-auto text-purple-50 fade-in-up stagger-2">
-                            Jelajahi ribuan koleksi buku digital, materi pembelajaran, dan sumber daya pendidikan yang tersedia 24/7 untuk mendukung perjalanan belajar Anda
-                       
- </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up stagger-3">
-                            <button onclick="enhancedShowSection('catalog')" class="bg-yellow-400 text-purple-900 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-yellow-300 transition-all transform hover:scale-105 shadow-lg btn-hover bounce-animation">
-                         
-                        🔍 Jelajahi Katalog
+                        <h1 class="text-5xl md:text-7xl font-black mb-6 slide-in-left">
+                            <span class="block">Selamat Datang di</span>
+                            <span class="block bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">Perpustakaan Digital</span>
+                        </h1>
+                        
+                        <p class="text-xl md:text-2xl mb-10 opacity-95 slide-in-right stagger-2 font-light leading-relaxed max-w-3xl mx-auto">
+                            Jelajahi ribuan koleksi buku digital dengan teknologi terdepan. Nikmati pengalaman membaca yang tak terlupakan dengan interface modern dan intuitif.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center bounce-in stagger-3">
+                            <button onclick="showCatalog()" class="btn-yellow text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-2xl pulse-button">
+                                ✨ Mulai Jelajahi Sekarang
                             </button>
-                            <button onclick="enhancedShowSection('analytics')" class="bg-white bg-opacity-20 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-opacity-30 transition-all border-2 border-white border-opacity-30 btn-hover">
-                    
-                        📊 Lihat Statistik
+                            <button class="glassmorphism text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-all duration-300">
+                                🎯 Pelajari Lebih Lanjut
                             </button>
                         </div>
                     </div>
-              
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="py-20 bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 relative overflow-hidden transition-colors duration-300">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-10 left-10 w-72 h-72 bg-indigo-500 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-block mb-4">
+                        <span class="bg-gradient-to-r from-blue-800 to-blue-900 text-white px-6 py-2 rounded-full text-sm font-semibold">✨ Fitur Unggulan</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black gradient-text mb-6">Pengalaman Membaca Terdepan</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto font-light">Teknologi canggih untuk memberikan pengalaman membaca digital yang tak terlupakan</p>
                 </div>
                 
-                <div class="absolute top-10 left-10 text-6xl opacity-20 float-animation">📚</div>
-                <div class="absolute bottom-10 right-10 text-6xl opacity-20 float-reverse">🎓</div>
-                <div class="absolute 
-top-1/2 left-20 text-4xl opacity-10 rotate-animation">✨</div>
-                <div class="absolute top-20 right-1/4 text-4xl opacity-10 pulse-animation">💡</div>
-                <div class="absolute bottom-1/4 left-1/3 text-3xl opacity-15 bounce-animation" style="animation-delay: 1s;">🌟</div>
-                <div class="absolute top-1/3 right-1/3 text-2xl opacity-20 float-animation" style="animation-delay: 3s;">🚀</div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
-                    <div class="text-3xl mb-2">📖</div>
-                    <div class="text-2xl font-bold text-gray-800">5,000+</div>
-               
-                    <div class="text-gray-600 text-sm">Koleksi Buku</div>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
-                    <div class="text-3xl mb-2">👥</div>
-                    <div class="text-2xl font-bold text-gray-800">1,200+</div>
-         
-                    <div class="text-gray-600 text-sm">Pengguna Aktif</div>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
-                    <div class="text-3xl mb-2">🏆</div>
-                    <div class="text-2xl font-bold text-gray-800">10</div>
-   
-                    <div class="text-gray-600 text-sm">Kategori Utama</div>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-lg text-center card-hover">
-                    <div class="text-3xl mb-2">⏰</div>
-                    
-                    <div class="text-2xl font-bold text-gray-800">24/7</div>
-                    <div class="text-gray-600 text-sm">Akses Online</div>
-                </div>
-            </div>
-
-            <div class="mb-12">
-                <h2 class="text-3xl 
-font-bold text-center text-gray-800 mb-8">Fitur Unggulan</h2>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center">
-                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  
-                        <span class="text-2xl">🔍</span>
+                    <div class="text-center p-8 card-modern rounded-3xl fade-in stagger-1 group">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-700 to-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-6 scale-on-hover shadow-xl">
+                            <span class="text-3xl">🔍</span>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3">Pencarian Mudah</h3>
-                        <p class="text-gray-600">Temukan buku yang Anda butuhkan dengan sistem pencarian yang canggih dan filter 
-kategori</p>
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">Pencarian AI</h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Temukan buku dengan teknologi AI yang memahami preferensi dan kebutuhan membaca Anda</p>
+                        <div class="mt-6 w-full h-1 bg-gradient-to-r from-blue-700 to-blue-800 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                     
-                        <span class="text-2xl">☁️</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Akses Google Drive</h3>
-                        <p class="text-gray-600">Semua koleksi tersimpan di Google Drive dengan pembagian folder sesuai klasifikasi Dewey Decimal untuk 
-akses yang mudah</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                   
-                        <span class="text-2xl">📊</span>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3">Analitik Real-time</h3>
-                        <p class="text-gray-600">Pantau statistik penggunaan dan temukan koleksi yang paling populer di kalangan siswa</p>
-  
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Kategori Populer</h2>
-   
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    <div class="bg-gradient-to-br from-purple-500 to-pink-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="enhancedShowSection('catalog')">
-                        <div class="text-3xl mb-2">🔬</div>
-                        <div class="font-semibold">Sains</div>
-  
-                        <div class="text-xs opacity-80">500-599</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-blue-500 to-cyan-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="enhancedShowSection('catalog')">
-                        <div class="text-3xl 
-mb-2">🏛️</div>
-                        <div class="font-semibold">Sosial</div>
-                        <div class="text-xs opacity-80">300-399</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-green-500 to-teal-500 text-white p-6 rounded-xl text-center card-hover 
-cursor-pointer" onclick="enhancedShowSection('catalog')">
-                        <div class="text-3xl mb-2">📚</div>
-                        <div class="font-semibold">Sastra</div>
-                        <div class="text-xs opacity-80">800-899</div>
-                    </div>
-  
-                    <div class="bg-gradient-to-br from-orange-500 to-red-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="enhancedShowSection('catalog')">
-                        <div class="text-3xl mb-2">💻</div>
-                        <div class="font-semibold">Teknologi</div>
-                     
-                        <div class="text-xs opacity-80">000-099</div>
-                    </div>
-                    <div class="bg-gradient-to-br from-pink-500 to-rose-500 text-white p-6 rounded-xl text-center card-hover cursor-pointer" onclick="enhancedShowSection('catalog')">
-                        <div class="text-3xl mb-2">🎨</div>
-                   
-                        <div class="font-semibold">Seni</div>
-                        <div class="text-xs opacity-80">700-799</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 text-center">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4">Mulai Jelajahi Sekarang!</h2>
-                <p class="text-lg mb-6 opacity-90">Ribuan buku menanti untuk dibaca.
-Temukan pengetahuan baru hari ini.</p>
-                <button onclick="enhancedShowSection('catalog')" class="bg-white text-indigo-600 px-8 py-3 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
-                    🚀 Mulai Eksplorasi
-                </button>
-            </div>
-        </section>
-
-        <section id="catalog" class="hidden">
-            <div class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-gray-800">Katalog Perpustakaan</h2>
-                <div class="flex space-x-4">
-                    <input type="text" id="searchInput" placeholder="Cari kategori..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-  
-                    <button onclick="searchCatalog()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">Cari</button>
-                </div>
-            </div>
-            
-            <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-               
-                </div>
-        </section>
-
-        <section id="analytics" class="hidden">
-            <div class="flex justify-between items-center mb-6 sm:mb-8">
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Dashboard Analitik</h2>
-            
-                <div class="flex items-center space-x-2">
-                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span class="text-sm text-gray-600 font-medium">Real-time</span>
-                </div>
-            </div>
-            
-     
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center justify-between">
-                        <div class="min-w-0 flex-1">
- 
-                            <p class="text-gray-500 text-xs sm:text-sm truncate">Total Kunjungan</p>
-                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="totalVisits">0</p>
-                        </div>
-         
-                        <div class="text-2xl sm:text-3xl ml-2">👥</div>
-                    </div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center justify-between">
-  
-                        <div class="min-w-0 flex-1">
-                            <p class="text-gray-500 text-xs sm:text-sm truncate">Kunjungan Hari Ini</p>
-                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="todayVisits">0</p>
-       
-                        </div>
-                        <div class="text-2xl sm:text-3xl ml-2">📅</div>
-                    </div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 
-rounded-xl shadow-lg">
-                    <div class="flex items-center justify-between">
-                        <div class="min-w-0 flex-1">
-                            <p class="text-gray-500 text-xs sm:text-sm truncate">Katalog Diakses</p>
-                 
-                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="catalogAccessed">0</p>
-                        </div>
-                        <div class="text-2xl sm:text-3xl ml-2">📖</div>
-                    </div>
-           
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center justify-between">
-                        <div class="min-w-0 flex-1">
-                         
-                            <p class="text-gray-500 text-xs sm:text-sm truncate">Rata-rata Harian</p>
-                            <p class="text-xl sm:text-2xl font-bold text-gray-800 transition-all duration-200" id="dailyAverage">0</p>
-                        </div>
-                        <div class="text-2xl sm:text-3xl ml-2">📈</div>
-      
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
-                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-      
-                    <h3 class="text-lg sm:text-xl font-semibold mb-4">Kunjungan 7 Hari Terakhir</h3>
-                    <div class="relative h-64 sm:h-80">
-                        <canvas id="visitsChart"></canvas>
-                    </div>
-           
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-xl shadow-lg">
-                    <h3 class="text-lg sm:text-xl font-semibold mb-4">Katalog Paling Populer</h3>
-                    <div class="relative h-64 sm:h-80">
-                        <canvas 
-id="popularChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg mt-6 lg:mt-8 overflow-hidden">
-                <div class="p-4 
-sm:p-6 border-b border-gray-200">
-                    <h3 class="text-lg sm:text-xl font-semibold">Kategori Paling Sering Diakses</h3>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full min-w-full">
-                 
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode</th>
-                       
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Akses</th>
-                                <th class="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase 
-tracking-wider">%</th>
-                            </tr>
-                        </thead>
-                        <tbody id="popularTable" class="bg-white divide-y divide-gray-200">
                     
-                        </tbody>
-                    </table>
+                    <div class="text-center p-8 card-modern rounded-3xl fade-in stagger-2 group">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-6 scale-on-hover shadow-xl">
+                            <span class="text-3xl">📱</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">Multi-Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Sinkronisasi otomatis di semua perangkat dengan cloud storage yang aman dan cepat</p>
+                        <div class="mt-6 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    </div>
+                    
+                    <div class="text-center p-8 card-modern rounded-3xl fade-in stagger-3 group">
+                        <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 scale-on-hover shadow-xl">
+                            <span class="text-3xl">📚</span>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">Koleksi Premium</h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">Akses ke ribuan buku berkualitas tinggi dengan rekomendasi personal yang cerdas</p>
+                        <div class="mt-6 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                    </div>
                 </div>
             </div>
-        </section>
-    
-    </main>
+        </div>
+
+        <!-- Popular Categories Section -->
+        <div class="py-20 bg-white dark:bg-gray-800 relative overflow-hidden transition-colors duration-300">
+            <!-- Animated Background -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-0 left-1/4 w-64 h-64 bg-red-400 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <div class="inline-block mb-4">
+                        <span class="bg-gradient-to-r from-blue-700 to-blue-800 text-white px-6 py-2 rounded-full text-sm font-semibold">🔥 Trending</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black gradient-text mb-6">Kategori Terpopuler</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto font-light">Jelajahi kategori yang paling diminati oleh ribuan pembaca</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div onclick="showBooks('000')" class="cursor-pointer category-card bg-gradient-to-br from-red-500 via-red-600 to-pink-600 text-white p-8 rounded-3xl fade-in stagger-1 rotate-on-hover shadow-2xl group">
+                        <div class="text-4xl mb-4 bounce-in scale-on-hover">💻</div>
+                        <h3 class="text-xl font-bold mb-3">Ilmu Komputer</h3>
+                        <p class="opacity-90 text-sm font-medium">Teknologi & Programming</p>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                        </div>
+                    </div>
+                    
+                    <div onclick="showBooks('300')" class="cursor-pointer category-card bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 text-white p-8 rounded-3xl fade-in stagger-2 rotate-on-hover shadow-2xl group">
+                        <div class="text-4xl mb-4 bounce-in stagger-1 scale-on-hover">👥</div>
+                        <h3 class="text-xl font-bold mb-3">Ilmu Sosial</h3>
+                        <p class="opacity-90 text-sm font-medium">Sosiologi & Politik</p>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                        </div>
+                    </div>
+                    
+                    <div onclick="showBooks('500')" class="cursor-pointer category-card bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white p-8 rounded-3xl fade-in stagger-3 rotate-on-hover shadow-2xl group">
+                        <div class="text-4xl mb-4 bounce-in stagger-2 scale-on-hover">🔬</div>
+                        <h3 class="text-xl font-bold mb-3">Sains</h3>
+                        <p class="opacity-90 text-sm font-medium">Matematika & Fisika</p>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                        </div>
+                    </div>
+                    
+                    <div onclick="showBooks('800')" class="cursor-pointer category-card bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 text-white p-8 rounded-3xl fade-in stagger-4 rotate-on-hover shadow-2xl group">
+                        <div class="text-4xl mb-4 bounce-in stagger-3 scale-on-hover">📖</div>
+                        <h3 class="text-xl font-bold mb-3">Sastra</h3>
+                        <p class="opacity-90 text-sm font-medium">Novel & Puisi</p>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="py-16 bg-white dark:bg-gray-800 transition-colors duration-300">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Mulai Jelajahi Sekarang</h2>
+                <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">Temukan ribuan buku digital berkualitas tinggi yang siap menemani perjalanan belajar Anda. Akses gratis, kapan saja, dimana saja!</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showCatalog()" class="bg-indigo-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg bounce-in stagger-1 glow-on-hover">
+                        📚 Lihat Semua Katalog
+                    </button>
+                    <button onclick="showBooks('000')" class="bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-400 border-2 border-indigo-600 dark:border-indigo-400 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-indigo-50 dark:hover:bg-gray-600 transition duration-300 bounce-in stagger-2 glow-on-hover">
+                        🔥 Buku Populer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="py-20 bg-gradient-to-r from-blue-800 via-blue-900 to-indigo-900 relative overflow-hidden">
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl opacity-20"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Dipercaya Ribuan Pengguna</h2>
+                    <p class="text-white text-xl opacity-90 font-light">Statistik yang membanggakan dari perpustakaan digital terdepan</p>
+                </div>
+                
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="text-center stats-card p-8 rounded-3xl fade-in stagger-1 neon-glow">
+                        <div class="text-5xl font-black text-white mb-4 bounce-in">10,000+</div>
+                        <div class="text-white text-lg font-semibold opacity-90">Koleksi Buku Digital</div>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full w-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center stats-card p-8 rounded-3xl fade-in stagger-2 neon-glow">
+                        <div class="text-5xl font-black text-white mb-4 bounce-in stagger-1">10</div>
+                        <div class="text-white text-lg font-semibold opacity-90">Kategori Dewey</div>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full w-4/5"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center stats-card p-8 rounded-3xl fade-in stagger-3 neon-glow">
+                        <div class="text-5xl font-black text-white mb-4 bounce-in stagger-2">24/7</div>
+                        <div class="text-white text-lg font-semibold opacity-90">Akses Online</div>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full w-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center stats-card p-8 rounded-3xl fade-in stagger-4 neon-glow">
+                        <div class="text-5xl font-black text-white mb-4 bounce-in stagger-3">100%</div>
+                        <div class="text-white text-lg font-semibold opacity-90">Gratis Selamanya</div>
+                        <div class="mt-4 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                            <div class="h-full bg-white rounded-full w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catalog Page -->
+    <div id="catalogPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 min-h-screen transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-16">
+                <div class="inline-block mb-6">
+                    <span class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg">📚 Sistem Dewey</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black gradient-text mb-6">Katalog Perpustakaan</h1>
+                <p class="text-gray-600 dark:text-gray-300 text-xl max-w-3xl mx-auto font-light leading-relaxed">Temukan koleksi buku berdasarkan Sistem Klasifikasi Dewey yang terorganisir dengan sempurna</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div onclick="showBooks('000')" class="cursor-pointer category-card bg-gradient-to-br from-red-500 via-red-600 to-pink-600 text-white p-8 rounded-3xl fade-in stagger-1 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">💻</div>
+                    <h3 class="text-2xl font-bold mb-3">000 - Ilmu Komputer</h3>
+                    <p class="opacity-90 font-medium">Teknologi informasi, pemrograman, dan sistem komputer</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('100')" class="cursor-pointer category-card bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 text-white p-8 rounded-3xl fade-in stagger-2 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">🤔</div>
+                    <h3 class="text-2xl font-bold mb-3">100 - Filsafat</h3>
+                    <p class="opacity-90 font-medium">Pemikiran filosofis, etika, dan psikologi</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('200')" class="cursor-pointer category-card bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 text-white p-8 rounded-3xl fade-in stagger-3 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">🕌</div>
+                    <h3 class="text-2xl font-bold mb-3">200 - Agama</h3>
+                    <p class="opacity-90 font-medium">Studi agama, teologi, dan spiritualitas</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('300')" class="cursor-pointer category-card bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 text-white p-8 rounded-3xl fade-in stagger-4 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">👥</div>
+                    <h3 class="text-2xl font-bold mb-3">300 - Ilmu Sosial</h3>
+                    <p class="opacity-90 font-medium">Sosiologi, politik, ekonomi, dan hukum</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('400')" class="cursor-pointer category-card bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 text-white p-8 rounded-3xl fade-in stagger-1 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">🗣️</div>
+                    <h3 class="text-2xl font-bold mb-3">400 - Bahasa</h3>
+                    <p class="opacity-90 font-medium">Linguistik, kamus, dan pembelajaran bahasa</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('500')" class="cursor-pointer category-card bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white p-8 rounded-3xl fade-in stagger-2 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">🔬</div>
+                    <h3 class="text-2xl font-bold mb-3">500 - Sains</h3>
+                    <p class="opacity-90 font-medium">Matematika, fisika, kimia, dan biologi</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('600')" class="cursor-pointer category-card bg-gradient-to-br from-pink-500 via-rose-600 to-red-600 text-white p-8 rounded-3xl fade-in stagger-3 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">⚕️</div>
+                    <h3 class="text-2xl font-bold mb-3">600 - Teknologi</h3>
+                    <p class="opacity-90 font-medium">Kedokteran, teknik, dan teknologi terapan</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('700')" class="cursor-pointer category-card bg-gradient-to-br from-teal-500 via-cyan-600 to-blue-600 text-white p-8 rounded-3xl fade-in stagger-4 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">🎨</div>
+                    <h3 class="text-2xl font-bold mb-3">700 - Seni</h3>
+                    <p class="opacity-90 font-medium">Seni rupa, musik, fotografi, dan desain</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('800')" class="cursor-pointer category-card bg-gradient-to-br from-orange-500 via-amber-600 to-yellow-600 text-white p-8 rounded-3xl fade-in stagger-1 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">📖</div>
+                    <h3 class="text-2xl font-bold mb-3">800 - Sastra</h3>
+                    <p class="opacity-90 font-medium">Novel, puisi, dan karya sastra</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+                
+                <div onclick="showBooks('900')" class="cursor-pointer category-card bg-gradient-to-br from-gray-600 via-slate-700 to-gray-800 text-white p-8 rounded-3xl fade-in stagger-2 rotate-on-hover shadow-2xl group">
+                    <div class="text-4xl mb-4 scale-on-hover">🏛️</div>
+                    <h3 class="text-2xl font-bold mb-3">900 - Sejarah</h3>
+                    <p class="opacity-90 font-medium">Sejarah dunia, biografi, dan geografi</p>
+                    <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
+                        <div class="h-full bg-white rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Books List Page -->
+    <div id="booksPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 min-h-screen transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="mb-12">
+                <button onclick="showCatalog()" class="glassmorphism text-indigo-600 dark:text-indigo-400 hover:text-white hover:bg-indigo-600 px-6 py-3 rounded-2xl mb-6 flex items-center font-semibold transition-all duration-300 shadow-lg">
+                    ← Kembali ke Katalog
+                </button>
+                <h1 id="categoryTitle" class="text-4xl md:text-5xl font-black gradient-text mb-4"></h1>
+                <p class="text-gray-600 dark:text-gray-300 text-xl font-light">Pilih buku yang ingin Anda baca dan mulai petualangan literasi</p>
+            </div>
+            
+            <div id="booksList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Books will be populated here -->
+            </div>
+        </div>
+    </div>
 
     <script>
-        // =================================================================================
-        // WARNING: PASTIKAN GANTI URL INI DENGAN URL DEPLOYED GOOGLE APPS SCRIPT ANDA!
-        // =================================================================================
-        const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyzk9SVDj66w8CjPoyJPHijaT2DcAuaQlAFkwsmXujR8ag6amrROU-iOqFs0G2fQEtT/exec";
-        
-        // --- DATA BUKU/KATALOG (TIDAK PERLU DIUBAH) ---
-        const deweyCategories = [
-            { code: '000-099', title: 'Ilmu Komputer & Informasi', description: 'Komputer, internet, dan teknologi informasi', driveUrl: 'https://drive.google.com/drive/folders/1sMejTAY3_UvWBeoT5v9QEJ7EiAjY0ah6' },
-            { code: '100-199', title: 'Filsafat & Psikologi', description: 'Pemikiran filosofis dan ilmu jiwa', driveUrl: 'https://drive.google.com/drive/folders/1krIJUvFjzkDDplXIuyzbbur55Seeewlu' },
-            { code: '200-299', title: 'Agama', description: 'Berbagai ajaran dan kepercayaan agama', driveUrl: 'https://drive.google.com/drive/folders/18hEM4JgXIhc64ZB62CAPbrgsByPAahbu' },
-            { code: '300-399', title: 'Ilmu Sosial', description: 'Sosiologi, politik, ekonomi, dan hukum', driveUrl: 'https://drive.google.com/drive/folders/1YSdbOXdL5uiFP9U_63SzOAiGrb5tZkkQ' },
-            { code: '400-499', title: 'Bahasa', description: 'Linguistik dan pembelajaran bahasa', driveUrl: 'https://drive.google.com/drive/folders/1HlkRe1iwewBDx-9glCmmnaY7raoRnX6C' },
-            { code: '500-599', title: 'Sains & Matematika', description: 'Ilmu pengetahuan alam dan matematika', driveUrl: 'https://drive.google.com/drive/folders/15jAyy-OxQl2TCEuC3fNYTmPFHagJtmj-' },
-            { code: '600-699', title: 'Teknologi & Ilmu Terapan', description: 'Teknik, kedokteran, dan pertanian', driveUrl: 'https://drive.google.com/drive/folders/11-XXkbJI85nYwAwWTzCVOrmmT2Dupihw' },
-            { code: '700-799', title: 'Seni & Rekreasi', description: 'Seni rupa, musik, olahraga, dan permainan', driveUrl: 'https://drive.google.com/drive/folders/1brVKIR4vHBEmcIeY7Jg5akMsNPuki116' },
-            { code: '800-899', title: 'Sastra', description: 'Karya sastra dan kritik sastra', driveUrl: 'https://drive.google.com/drive/folders/1cTAqHVVcMZhMVCOYFti1jk9to2Hxx0E_' },
-            { code: '900-999', title: 'Sejarah & Geografi', description: 'Sejarah dunia dan ilmu bumi', driveUrl: 'https://drive.google.com/drive/folders/1Jbf-L_CYmhpp9W-KMrx_MohIhBtoLfqJ' }
-        ];
+        // Sample book data for each category
+        const booksData = {
+            '000': [
+                { title: 'Pengantar Ilmu Komputer', author: 'Dr. Ahmad Susanto', description: 'Buku dasar tentang konsep-konsep fundamental dalam ilmu komputer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Algoritma dan Pemrograman', author: 'Prof. Siti Nurhaliza', description: 'Panduan lengkap algoritma dan teknik pemrograman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Basis Data Terdistribusi', author: 'Dr. Budi Raharjo', description: 'Konsep dan implementasi sistem basis data terdistribusi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Keamanan Siber', author: 'Ir. Maya Sari', description: 'Strategi dan teknik untuk melindungi sistem informasi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '100': [
+                { title: 'Filsafat Timur dan Barat', author: 'Prof. Bambang Sugiharto', description: 'Perbandingan pemikiran filosofis dari Timur dan Barat', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Etika dalam Kehidupan', author: 'Dr. Ratna Megawangi', description: 'Panduan praktis menerapkan etika dalam kehidupan sehari-hari', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Psikologi Positif', author: 'Dr. Eko Handayani', description: 'Memahami kekuatan pikiran untuk kehidupan yang lebih baik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Logika dan Penalaran', author: 'Prof. Joko Sutrisno', description: 'Dasar-dasar logika untuk berpikir kritis dan sistematis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '200': [
+                { title: 'Studi Perbandingan Agama', author: 'Dr. Abdul Rahman', description: 'Kajian mendalam tentang berbagai tradisi keagamaan dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Spiritualitas Modern', author: 'Ustadz Yusuf Mansur', description: 'Menggali makna spiritualitas di era kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Sejarah Agama-Agama', author: 'Prof. Maria Ulfah', description: 'Perjalanan sejarah perkembangan agama-agama besar dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Teologi Kontemporer', author: 'Dr. Azyumardi Azra', description: 'Pemikiran teologis dalam konteks zaman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '300': [
+                { title: 'Sosiologi Indonesia', author: 'Prof. Parsudi Suparlan', description: 'Analisis struktur dan dinamika masyarakat Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Ekonomi Pembangunan', author: 'Dr. Sri Mulyani', description: 'Teori dan praktik pembangunan ekonomi berkelanjutan', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Hukum dan Keadilan', author: 'Prof. Mahfud MD', description: 'Konsep keadilan dalam sistem hukum Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Politik dan Demokrasi', author: 'Dr. Rizal Mallarangeng', description: 'Dinamika politik dan demokratisasi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '400': [
+                { title: 'Linguistik Umum', author: 'Prof. Harimurti Kridalaksana', description: 'Pengantar komprehensif ilmu bahasa dan linguistik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Bahasa Indonesia Baku', author: 'Dr. Dendy Sugono', description: 'Panduan penggunaan bahasa Indonesia yang baik dan benar', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Pembelajaran Bahasa Asing', author: 'Prof. Fuad Abdul Hamied', description: 'Metode efektif dalam pembelajaran bahasa asing', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Kamus Etimologi', author: 'Dr. Gorys Keraf', description: 'Penelusuran asal-usul kata dalam bahasa Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '500': [
+                { title: 'Fisika Kuantum', author: 'Prof. Terry Mart', description: 'Pengantar dunia fisika kuantum dan aplikasinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Kimia Organik', author: 'Dr. Buchari', description: 'Studi mendalam tentang senyawa karbon dan reaksinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Biologi Molekuler', author: 'Prof. Sangkot Marzuki', description: 'Eksplorasi kehidupan di tingkat molekuler', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Matematika Diskrit', author: 'Dr. Rinaldi Munir', description: 'Konsep matematika untuk ilmu komputer dan informatika', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '600': [
+                { title: 'Kedokteran Tropis', author: 'Prof. Ali Sulaiman', description: 'Penanganan penyakit-penyakit daerah tropis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Teknik Sipil Modern', author: 'Ir. Wiratman Wangsadinata', description: 'Inovasi dalam konstruksi dan infrastruktur', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Teknologi Pangan', author: 'Dr. Made Astawan', description: 'Pengolahan dan pengawetan makanan modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Manajemen Industri', author: 'Prof. Rhenald Kasali', description: 'Strategi pengelolaan industri di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '700': [
+                { title: 'Seni Rupa Indonesia', author: 'Prof. Soedarso Sp', description: 'Perkembangan seni rupa dari tradisional hingga kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Musik Nusantara', author: 'Dr. Franki Raden', description: 'Kekayaan musik tradisional Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Fotografi Digital', author: 'Arbain Rambey', description: 'Teknik dan estetika fotografi di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Desain Grafis', author: 'Danton Sihombing', description: 'Prinsip dan aplikasi desain visual yang efektif', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '800': [
+                { title: 'Sastra Indonesia Modern', author: 'Prof. Sapardi Djoko Damono', description: 'Perkembangan sastra Indonesia abad ke-20', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Puisi Kontemporer', author: 'Goenawan Mohamad', description: 'Antologi puisi Indonesia kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Novel Klasik Dunia', author: 'Dr. Melani Budianta', description: 'Analisis karya-karya sastra dunia yang berpengaruh', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Kritik Sastra', author: 'Prof. Rachmat Djoko Pradopo', description: 'Pendekatan dan metode dalam kritik sastra', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ],
+            '900': [
+                { title: 'Sejarah Indonesia', author: 'Prof. Sartono Kartodirdjo', description: 'Perjalanan bangsa Indonesia dari masa ke masa', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Biografi Tokoh Dunia', author: 'Dr. Anhar Gonggong', description: 'Kisah hidup tokoh-tokoh berpengaruh dalam sejarah', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Geografi Indonesia', author: 'Prof. Bintarto', description: 'Kondisi geografis dan kekayaan alam Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Arkeologi Nusantara', author: 'Dr. Mundardjito', description: 'Penemuan dan penelitian arkeologi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            ]
+        };
 
-        // --- VARIABEL ANALITIK ---
-        let visitsChart = null;
-        let popularChart = null;
+        const categoryNames = {
+            '000': 'Ilmu Komputer & Teknologi Informasi',
+            '100': 'Filsafat & Psikologi',
+            '200': 'Agama & Teologi',
+            '300': 'Ilmu Sosial',
+            '400': 'Bahasa & Linguistik',
+            '500': 'Sains & Matematika',
+            '600': 'Teknologi & Kedokteran',
+            '700': 'Seni & Rekreasi',
+            '800': 'Sastra & Bahasa',
+            '900': 'Sejarah & Geografi'
+        };
 
-        // --- FUNGSI UTILITY ---
-        function showCopyNotification(message) {
-            const notification = document.createElement('div');
-            notification.className = 'fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded-lg shadow-xl z-50 transition-transform transform translate-x-full';
-            notification.innerHTML = `<div class="flex items-center"><svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>${message}</div>`;
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.classList.remove('translate-x-full');
-                notification.classList.add('translate-x-0');
-            }, 10);
-
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                notification.classList.remove('translate-x-0');
-                notification.addEventListener('transitionend', () => notification.remove());
-            }, 3000);
-        }
-
-        function getEmoji(index) {
-            const emojis = ['💻', '🧠', '🕊️', '🏛️', '🗣️', '🔬', '⚙️', '🎨', '📚', '🌍'];
-            return emojis[index] || '📖';
-        }
-        
-        // --- FUNGSI BACKEND (APPS SCRIPT INTERACTION) ---
-
-        /**
-         * Mengirim log data ke Google Apps Script.
-         * @param {string} eventType - Jenis event ('visit', 'catalog_access', 'view_analytics').
-         * @param {Object} [details={}] - Detail tambahan event (misalnya kategori yang diakses).
-         */
-        function sendLog(eventType, details = {}) {
-            if (GAS_WEB_APP_URL.includes("GANTI_DENGAN_URL_DEPLOYED_WEB_APP_ANDA")) {
-                console.warn("Log TIDAK DIKIRIM: Harap ganti placeholder GAS_WEB_APP_URL dengan URL Apps Script Anda.");
-                return;
-            }
-
-            const payload = {
-                eventType: eventType,
-                timestamp: new Date().toISOString(),
-                details: details
-            };
-
-            fetch(GAS_WEB_APP_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                // Diabaikan: Tidak perlu log respon sukses, hanya log error
-            })
-            .catch(error => {
-                console.error("Gagal mengirim log ke Apps Script:", error);
-            });
-        }
-
-        /**
-         * Mengambil data analitik dari Google Apps Script.
-         */
-        async function fetchAnalyticsData() {
-            if (GAS_WEB_APP_URL.includes("GANTI_DENGAN_URL_DEPLOYED_WEB_APP_ANDA")) {
-                document.getElementById('totalVisits').textContent = 'N/A';
-                document.getElementById('todayVisits').textContent = 'N/A';
-                document.getElementById('catalogAccessed').textContent = 'N/A';
-                document.getElementById('dailyAverage').textContent = 'N/A';
-                document.getElementById('visitsChart').parentElement.innerHTML = '<p class="text-red-500 text-center">Gagal memuat data: Harap perbarui GAS_WEB_APP_URL.</p>';
-                document.getElementById('popularChart').parentElement.innerHTML = '<p class="text-red-500 text-center">Gagal memuat data: Harap perbarui GAS_WEB_APP_URL.</p>';
-                document.getElementById('popularTable').innerHTML = '<tr><td colspan="4" class="text-center py-4 text-gray-500">Gagal memuat data: Harap perbarui GAS_WEB_APP_URL.</td></tr>';
-                return;
-            }
-
-            try {
-                const response = await fetch(GAS_WEB_APP_URL + '?action=getAnalytics');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                
-                if (data.status === 'success') {
-                    updateAnalyticsDashboard(data.analytics);
-                    drawCharts(data.analytics);
-                } else {
-                    throw new Error(data.message || 'Gagal mengambil data analitik dari Apps Script.');
-                }
-            } catch (error) {
-                console.error("Error fetching analytics data:", error);
-                // Tampilkan pesan error di dashboard
-                document.getElementById('totalVisits').textContent = 'ERROR';
-                document.getElementById('todayVisits').textContent = 'ERROR';
-                document.getElementById('catalogAccessed').textContent = 'ERROR';
-                document.getElementById('dailyAverage').textContent = 'ERROR';
-            }
-        }
-
-
-        // --- FUNGSI UTAMA ---
-
-        // 1. Inisialisasi
-        function init() {
-            generateCatalog();
-            showSection('home');
+        function showHome() {
+            document.getElementById('homePage').classList.remove('hidden');
+            document.getElementById('catalogPage').classList.add('hidden');
+            document.getElementById('booksPage').classList.add('hidden');
             
-            // Catat event kunjungan (page load)
-            sendLog('visit'); 
-        }
-
-        // 2. Generate Catalog
-        function generateCatalog() {
-            const catalogGrid = document.getElementById('catalogGrid');
-            catalogGrid.innerHTML = '';
-            deweyCategories.forEach((category, index) => {
-                const card = document.createElement('div');
-                card.className = 'dewey-card card-hover text-white p-6 rounded-xl shadow-lg cursor-pointer';
-                card.innerHTML = `
-                    <div class="text-3xl mb-4">${getEmoji(index)}</div>
-                    <h3 class="text-xl font-bold mb-2">${category.code}</h3>
-                    <h4 class="text-lg font-semibold mb-2">${category.title}</h4>
-                    <p class="text-sm opacity-90 mb-3">${category.description}</p>
-                    <div class="mt-4 mb-3">
-                        <div class="bg-white bg-opacity-20 p-2 rounded text-xs break-all">
-                            <div class="flex justify-between items-center mb-1">
-                                <span class="font-semibold">🔗 Link Google Drive:</span>
-                                <button onclick="copyLink('${category.driveUrl}', event)" class="bg-white bg-opacity-30 hover:bg-opacity-50 px-2 py-1 rounded text-xs transition-all"> 📋 Copy </button>
-                            </div>
-                            <div class="text-xs opacity-80 cursor-pointer" onclick="copyLink('${category.driveUrl}', event)" title="Klik untuk copy link"> ${category.driveUrl.substring(0, 30)}... </div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">📁 Google Drive</span>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                `;
-                card.onclick = () => openCatalog(category);
-                catalogGrid.appendChild(card);
-            });
-        }
-
-        // 3. Open Catalog & Track Access
-        function openCatalog(category) {
-            // Log event akses katalog ke Apps Script
-            sendLog('catalog_access', { code: category.code, title: category.title });
-
-            // Tampilkan modal konfirmasi
-            const confirmed = confirm(`Anda akan diarahkan ke Google Drive untuk mengakses koleksi "${category.title}" (${category.code}). Lanjutkan?`);
-
-            if (confirmed) {
-                // Gunakan URL drive spesifik untuk kategori ini
-                const driveUrl = category.driveUrl;
-                window.open(driveUrl, '_blank'); 
-
-                // Tampilkan pesan sukses
-                setTimeout(() => { showCopyNotification('Google Drive dibuka di tab baru!'); }, 500);
-            }
-        }
-
-        // 4. Update Dashboard Analytics
-        function updateAnalyticsDashboard(data) {
-            document.getElementById('totalVisits').textContent = data.totalVisits.toLocaleString();
-            document.getElementById('todayVisits').textContent = data.todayVisits.toLocaleString();
-            document.getElementById('catalogAccessed').textContent = data.catalogAccessed.toLocaleString();
-            document.getElementById('dailyAverage').textContent = (data.totalVisits / 30).toFixed(1); // Perkiraan rata-rata 30 hari
-            
-            // Update Popular Table
-            const popularTable = document.getElementById('popularTable');
-            popularTable.innerHTML = '';
-            
-            const totalAccess = data.popularCategories.reduce((sum, cat) => sum + cat.visits, 0);
-
-            if (data.popularCategories.length === 0) {
-                 popularTable.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-gray-500">Belum ada data akses katalog.</td></tr>';
-                 return;
-            }
-
-            data.popularCategories.forEach(cat => {
-                const percentage = totalAccess > 0 ? ((cat.visits / totalAccess) * 100).toFixed(1) : '0.0';
-                const row = document.createElement('tr');
-                row.className = 'hover:bg-purple-50 transition-colors';
-                row.innerHTML = `
-                    <td class="px-3 sm:px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${cat.code}</td>
-                    <td class="px-3 sm:px-6 py-3 whitespace-nowrap text-sm text-gray-600">${cat.title}</td>
-                    <td class="px-3 sm:px-6 py-3 whitespace-nowrap text-sm text-gray-600">${cat.visits.toLocaleString()}</td>
-                    <td class="px-3 sm:px-6 py-3 whitespace-nowrap text-sm font-semibold text-purple-600">${percentage}%</td>
-                `;
-                popularTable.appendChild(row);
-            });
-        }
-
-        // 5. Gambar Chart
-        function drawCharts(data) {
-            // Chart Kunjungan 7 Hari Terakhir
-            const visitsCtx = document.getElementById('visitsChart').getContext('2d');
-            if (visitsChart) visitsChart.destroy();
-            visitsChart = new Chart(visitsCtx, {
-                type: 'line',
-                data: {
-                    labels: data.weeklyLabels, // Dari Apps Script
-                    datasets: [{
-                        label: 'Kunjungan Harian',
-                        data: data.weeklyVisits, // Dari Apps Script
-                        backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                        borderColor: 'rgba(99, 102, 241, 1)',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        fill: true,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: { beginAtZero: true, grid: { display: false } },
-                        x: { grid: { display: false } }
-                    },
-                    plugins: { legend: { display: false } }
-                }
-            });
-
-            // Chart Katalog Paling Populer (Top 5)
-            const popularCtx = document.getElementById('popularChart').getContext('2d');
-            if (popularChart) popularChart.destroy();
-            
-            const topCategories = data.popularCategories.slice(0, 5);
-            const labels = topCategories.map(cat => cat.code);
-            const visits = topCategories.map(cat => cat.visits);
-
-            popularChart = new Chart(popularCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Jumlah Akses',
-                        data: visits,
-                        backgroundColor: [
-                            '#8b5cf6', // Indigo-500
-                            '#3b82f6', // Blue-500
-                            '#10b981', // Green-500
-                            '#f59e0b', // Amber-500
-                            '#f43f5e'  // Rose-500
-                        ],
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'right' }
-                    }
-                }
-            });
-        }
-        
-        // 6. Tampilkan Section
-        function showSection(sectionName) {
-            // Sembunyikan semua section
-            document.getElementById('home').classList.add('hidden');
-            document.getElementById('catalog').classList.add('hidden');
-            document.getElementById('analytics').classList.add('hidden');
-
-            // Tampilkan section yang dipilih
-            document.getElementById(sectionName).classList.remove('hidden');
-
-            // Update tombol navigasi
+            // Update nav buttons with modern styling
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('bg-white', 'bg-opacity-30');
-                btn.classList.add('bg-white', 'bg-opacity-20');
+                btn.classList.remove('btn-modern', 'text-white');
+                btn.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
             });
+            event.target.classList.add('btn-modern', 'text-white');
+            event.target.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
+        }
 
-            // Highlight tombol navigasi aktif
-            const activeBtn = document.querySelector(`button[onclick="enhancedShowSection('${sectionName}')"]`);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-opacity-20');
-                activeBtn.classList.add('bg-opacity-30');
-            }
+        function showCatalog() {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('catalogPage').classList.remove('hidden');
+            document.getElementById('booksPage').classList.add('hidden');
             
-            // Jika masuk ke halaman Analitik, fetch data
-            if (sectionName === 'analytics') {
-                sendLog('view_analytics'); // Log event view analytics
-                fetchAnalyticsData();
-            }
-        }
-        
-        // 7. Cari Katalog
-        function searchCatalog() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const catalogGrid = document.getElementById('catalogGrid');
-            const cards = catalogGrid.children;
-
-            for (let card of cards) {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            }
-        }
-
-        // 8. Copy Link
-        function copyLink(link, event) {
-            event.stopPropagation(); // Mencegah klik card secara keseluruhan
-            navigator.clipboard.writeText(link).then(() => {
-                showCopyNotification('Link berhasil dicopy!');
-            }).catch(err => {
-                console.error('Gagal menyalin link: ', err);
+            // Update nav buttons with modern styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('btn-modern', 'text-white');
+                btn.classList.add('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
             });
-        }
-
-        // 9. Animasi Scrolling
-        function initScrollAnimations() {
-            const elements = document.querySelectorAll('.scale-in');
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 }); // 10% elemen terlihat
-
-            elements.forEach(el => observer.observe(el));
-        }
-
-        // 10. Fungsi Animasi Loading untuk Tombol
-        function addLoadingAnimation(button) {
-            const originalText = button.innerHTML;
-            button.innerHTML = '<span class="spin-animation inline-block">⏳</span> Loading...';
-            button.disabled = true;
             
-            // Set timeout untuk mengembalikan tombol ke kondisi awal setelah 1 detik
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }, 1000);
-        }
-
-        // 11. Enhanced button clicks dengan animasi loading
-        function enhancedShowSection(sectionName) {
-            const button = event.target;
-            addLoadingAnimation(button);
-            
-            // Penundaan sebentar untuk memberikan efek loading sebelum pindah section
-            setTimeout(() => {
-                showSection(sectionName);
-            }, 500);
-        }
-
-        // --- INITIALIZATION ---
-        document.addEventListener('DOMContentLoaded', function() {
-            init();
-            initScrollAnimations();
-            
-            // Tambahkan staggered animation ke elemen saat loading
-            setTimeout(() => {
-                document.querySelectorAll('.scale-in').forEach((el, index) => {
-                    setTimeout(() => {
-                        el.classList.add('visible');
-                    }, index * 100);
-                });
-            }, 300);
-        });
-
-        // Search saat tombol Enter ditekan
-        document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && document.activeElement.id === 'searchInput') {
-                searchCatalog();
+            // Find and highlight catalog button
+            const catalogBtn = Array.from(document.querySelectorAll('.nav-btn')).find(btn => btn.textContent === 'Katalog');
+            if (catalogBtn) {
+                catalogBtn.classList.add('btn-modern', 'text-white');
+                catalogBtn.classList.remove('text-gray-600', 'dark:text-gray-300', 'hover:text-indigo-600', 'dark:hover:text-indigo-400', 'hover:bg-white', 'dark:hover:bg-gray-700', 'hover:shadow-lg');
             }
-        });
+        }
 
-        // Tambahkan smooth scrolling
-        document.documentElement.style.scrollBehavior = 'smooth';
+        function showBooks(category) {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('catalogPage').classList.add('hidden');
+            document.getElementById('booksPage').classList.remove('hidden');
+            
+            // Update title
+            document.getElementById('categoryTitle').textContent = `Kategori ${category} - ${categoryNames[category]}`;
+            
+            // Populate books
+            const booksList = document.getElementById('booksList');
+            const books = booksData[category] || [];
+            
+            booksList.innerHTML = books.map((book, index) => `
+                <div class="card-modern rounded-3xl overflow-hidden shadow-2xl fade-in group" style="animation-delay: ${index * 0.1}s">
+                    <div class="book-spine h-3"></div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold gradient-text mb-3 leading-tight">${book.title}</h3>
+                        <p class="text-indigo-600 dark:text-indigo-400 font-semibold mb-4 text-lg">oleh ${book.author}</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed font-light">${book.description}</p>
+                        <button onclick="openFlipbook('${book.flipbook}')" class="w-full btn-modern text-white px-6 py-4 rounded-2xl font-bold shadow-xl neon-glow">
+                            ✨ Baca Sekarang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openFlipbook(url) {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark');
+            
+            if (isDark) {
+                html.classList.remove('dark');
+                localStorage.setItem('darkMode', 'false');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('darkMode', 'true');
+            }
+        }
+
+        // Initialize Dark Mode from localStorage
+        function initializeDarkMode() {
+            const savedMode = localStorage.getItem('darkMode');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        // Initialize with home page and dark mode
+        initializeDarkMode();
+        showHome();
     </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98c37779317b4ad6',t:'MTc2MDA3MTUxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
