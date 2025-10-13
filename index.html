@@ -293,7 +293,19 @@
                         <button onclick="showHome()" class="nav-btn btn-modern text-white px-6 py-3 rounded-2xl text-sm font-semibold shadow-lg">Home</button>
                         <button onclick="showCatalog()" class="nav-btn text-gray-600 hover:text-indigo-600 px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 hover:bg-white hover:shadow-lg">Katalog</button>
                         
-
+                        <!-- Search Bar -->
+                        <div class="relative">
+                            <input 
+                                type="text" 
+                                id="searchInput" 
+                                placeholder="Cari buku..." 
+                                class="w-64 px-4 py-2 pl-10 pr-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white shadow-lg text-sm"
+                                onkeyup="searchBooks()"
+                            >
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="text-gray-400">🔍</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -545,7 +557,7 @@
                 </div>
                 
                 <div onclick="showBooks('200')" class="cursor-pointer category-card bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 text-white p-8 rounded-3xl fade-in stagger-3 rotate-on-hover shadow-2xl group">
-                    
+                    <div class="text-4xl mb-4 scale-on-hover">🕌</div>
                     <h3 class="text-2xl font-bold mb-3">200 - Agama</h3>
                     <p class="opacity-90 font-medium">Studi agama, teologi, dan spiritualitas</p>
                     <div class="mt-6 w-full h-1 bg-white bg-opacity-30 rounded-full">
@@ -636,71 +648,122 @@
         </div>
     </div>
 
+    <!-- Search Results Page -->
+    <div id="searchPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="mb-12">
+                <button onclick="showHome()" class="glassmorphism text-indigo-600 hover:text-white hover:bg-indigo-600 px-6 py-3 rounded-2xl mb-6 flex items-center font-semibold transition-all duration-300 shadow-lg">
+                    ← Kembali ke Home
+                </button>
+                <h1 id="searchTitle" class="text-4xl md:text-5xl font-black gradient-text mb-4">Hasil Pencarian</h1>
+                <p id="searchSubtitle" class="text-gray-600 text-xl font-light">Menampilkan hasil pencarian untuk kata kunci Anda</p>
+            </div>
+            
+            <!-- Advanced Search Bar -->
+            <div class="mb-8 bg-white rounded-3xl p-6 shadow-xl">
+                <div class="flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 relative">
+                        <input 
+                            type="text" 
+                            id="advancedSearchInput" 
+                            placeholder="Cari berdasarkan judul, penulis, atau deskripsi..." 
+                            class="w-full px-4 py-3 pl-12 pr-4 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                            onkeyup="performAdvancedSearch()"
+                        >
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="text-gray-400 text-xl">🔍</span>
+                        </div>
+                    </div>
+                    <select id="categoryFilter" onchange="performAdvancedSearch()" class="px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-lg">
+                        <option value="">Semua Kategori</option>
+                        <option value="000">000 - Ilmu Komputer</option>
+                        <option value="100">100 - Filsafat</option>
+                        <option value="200">200 - Agama</option>
+                        <option value="300">300 - Ilmu Sosial</option>
+                        <option value="400">400 - Bahasa</option>
+                        <option value="500">500 - Sains</option>
+                        <option value="600">600 - Teknologi</option>
+                        <option value="700">700 - Seni</option>
+                        <option value="800">800 - Sastra</option>
+                        <option value="900">900 - Sejarah</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="searchResults" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Search results will be populated here -->
+            </div>
+            
+            <div id="noResults" class="hidden text-center py-16">
+                <div class="text-6xl mb-4">📚</div>
+                <h3 class="text-2xl font-bold text-gray-600 mb-2">Tidak ada hasil ditemukan</h3>
+                <p class="text-gray-500">Coba gunakan kata kunci yang berbeda atau pilih kategori lain</p>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Sample book data for each category
         const booksData = {
             '000': [
-                { title: 'Pengantar Ilmu Komputer', author: 'Dr. Ahmad Susanto', description: 'Buku dasar tentang konsep-konsep fundamental dalam ilmu komputer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Algoritma dan Pemrograman', author: 'Prof. Siti Nurhaliza', description: 'Panduan lengkap algoritma dan teknik pemrograman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Basis Data Terdistribusi', author: 'Dr. Budi Raharjo', description: 'Konsep dan implementasi sistem basis data terdistribusi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Basis Data Terdistribusi', author: 'Dr. Budi Raharjo', description: 'Konsep dan implementasi sistem basis data terdistribusi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Basis Data Terdistribusi', author: 'Dr. Budi Raharjo', description: 'Konsep dan implementasi sistem basis data terdistribusi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Keamanan Siber', author: 'Ir. Maya Sari', description: 'Strategi dan teknik untuk melindungi sistem informasi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'amse', author: 'Ir. Maya Sari', description: 'Strategi dan teknik untuk melindungi sistem informasi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '100': [
-                { title: 'Filsafat Timur dan Barat', author: 'Prof. Bambang Sugiharto', description: 'Perbandingan pemikiran filosofis dari Timur dan Barat', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Etika dalam Kehidupan', author: 'Dr. Ratna Megawangi', description: 'Panduan praktis menerapkan etika dalam kehidupan sehari-hari', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Psikologi Positif', author: 'Dr. Eko Handayani', description: 'Memahami kekuatan pikiran untuk kehidupan yang lebih baik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Logika dan Penalaran', author: 'Prof. Joko Sutrisno', description: 'Dasar-dasar logika untuk berpikir kritis dan sistematis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '200': [
-                { title: 'Studi Perbandingan Agama', author: 'Dr. Abdul Rahman', description: 'Kajian mendalam tentang berbagai tradisi keagamaan dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Spiritualitas Modern', author: 'Ustadz Yusuf Mansur', description: 'Menggali makna spiritualitas di era kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Sejarah Agama-Agama', author: 'Prof. Maria Ulfah', description: 'Perjalanan sejarah perkembangan agama-agama besar dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Teologi Kontemporer', author: 'Dr. Azyumardi Azra', description: 'Pemikiran teologis dalam konteks zaman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '300': [
-                { title: 'Sosiologi Indonesia', author: 'Prof. Parsudi Suparlan', description: 'Analisis struktur dan dinamika masyarakat Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Ekonomi Pembangunan', author: 'Dr. Sri Mulyani', description: 'Teori dan praktik pembangunan ekonomi berkelanjutan', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Hukum dan Keadilan', author: 'Prof. Mahfud MD', description: 'Konsep keadilan dalam sistem hukum Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Politik dan Demokrasi', author: 'Dr. Rizal Mallarangeng', description: 'Dinamika politik dan demokratisasi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '400': [
-                { title: 'Linguistik Umum', author: 'Prof. Harimurti Kridalaksana', description: 'Pengantar komprehensif ilmu bahasa dan linguistik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Bahasa Indonesia Baku', author: 'Dr. Dendy Sugono', description: 'Panduan penggunaan bahasa Indonesia yang baik dan benar', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Pembelajaran Bahasa Asing', author: 'Prof. Fuad Abdul Hamied', description: 'Metode efektif dalam pembelajaran bahasa asing', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Kamus Etimologi', author: 'Dr. Gorys Keraf', description: 'Penelusuran asal-usul kata dalam bahasa Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '500': [
-                { title: 'Fisika Kuantum', author: 'Prof. Terry Mart', description: 'Pengantar dunia fisika kuantum dan aplikasinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Kimia Organik', author: 'Dr. Buchari', description: 'Studi mendalam tentang senyawa karbon dan reaksinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Biologi Molekuler', author: 'Prof. Sangkot Marzuki', description: 'Eksplorasi kehidupan di tingkat molekuler', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Matematika Diskrit', author: 'Dr. Rinaldi Munir', description: 'Konsep matematika untuk ilmu komputer dan informatika', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '600': [
-                { title: 'Kedokteran Tropis', author: 'Prof. Ali Sulaiman', description: 'Penanganan penyakit-penyakit daerah tropis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Teknik Sipil Modern', author: 'Ir. Wiratman Wangsadinata', description: 'Inovasi dalam konstruksi dan infrastruktur', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Teknologi Pangan', author: 'Dr. Made Astawan', description: 'Pengolahan dan pengawetan makanan modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Manajemen Industri', author: 'Prof. Rhenald Kasali', description: 'Strategi pengelolaan industri di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '700': [
-                { title: 'Seni Rupa Indonesia', author: 'Prof. Soedarso Sp', description: 'Perkembangan seni rupa dari tradisional hingga kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Musik Nusantara', author: 'Dr. Franki Raden', description: 'Kekayaan musik tradisional Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Fotografi Digital', author: 'Arbain Rambey', description: 'Teknik dan estetika fotografi di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Desain Grafis', author: 'Danton Sihombing', description: 'Prinsip dan aplikasi desain visual yang efektif', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Cipta Lagu part 1', author: 'siswa-siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu part 1 Buku Karya siswa-siswi SMPK PENABUR Kota Modern', flipbook: 'https://heyzine.com/flip-book/4c54073f47.html' },
+                { title: 'cipta lagu part 2', author: 'siswa-siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu part 1 Buku Karya siswa-siswi SMPK PENABUR Kota Modern', flipbook: 'https://heyzine.com/flip-book/d6220a366e.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '800': [
-                { title: 'Sastra Indonesia Modern', author: 'Prof. Sapardi Djoko Damono', description: 'Perkembangan sastra Indonesia abad ke-20', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Puisi Kontemporer', author: 'Goenawan Mohamad', description: 'Antologi puisi Indonesia kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Novel Klasik Dunia', author: 'Dr. Melani Budianta', description: 'Analisis karya-karya sastra dunia yang berpengaruh', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Kritik Sastra', author: 'Prof. Rachmat Djoko Pradopo', description: 'Pendekatan dan metode dalam kritik sastra', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Roro Jonggrang', author: 'Buku Karya siswa-siswi', description: 'Bandung Bondowosi jatuh cinta pada Roro Jonggrang, namun Roro Jonggrang membencinya karena membunuh ayahnya dan mempermainkannya', flipbook: 'https://online.fliphtml5.com/pkmeunoia/iirx/#p=1' },
+                { title: 'Batu Gantung', author: 'Siswa-siswi SMPK PENABUR Kota Modern', description: 'Buku Karya siswa-siswi', flipbook: 'https://online.fliphtml5.com/pkmeunoia/iddp/#p=1' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '900': [
-                { title: 'Sejarah Indonesia', author: 'Prof. Sartono Kartodirdjo', description: 'Perjalanan bangsa Indonesia dari masa ke masa', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Biografi Tokoh Dunia', author: 'Dr. Anhar Gonggong', description: 'Kisah hidup tokoh-tokoh berpengaruh dalam sejarah', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Geografi Indonesia', author: 'Prof. Bintarto', description: 'Kondisi geografis dan kekayaan alam Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Arkeologi Nusantara', author: 'Dr. Mundardjito', description: 'Penemuan dan penelitian arkeologi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ]
         };
 
@@ -721,20 +784,30 @@
             document.getElementById('homePage').classList.remove('hidden');
             document.getElementById('catalogPage').classList.add('hidden');
             document.getElementById('booksPage').classList.add('hidden');
+            document.getElementById('searchPage').classList.add('hidden');
+            
+            // Clear search input
+            document.getElementById('searchInput').value = '';
             
             // Update nav buttons with modern styling
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('btn-modern', 'text-white');
                 btn.classList.add('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
             });
-            event.target.classList.add('btn-modern', 'text-white');
-            event.target.classList.remove('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
+            if (event && event.target) {
+                event.target.classList.add('btn-modern', 'text-white');
+                event.target.classList.remove('text-gray-600', 'hover:text-indigo-600', 'hover:bg-white', 'hover:shadow-lg');
+            }
         }
 
         function showCatalog() {
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('catalogPage').classList.remove('hidden');
             document.getElementById('booksPage').classList.add('hidden');
+            document.getElementById('searchPage').classList.add('hidden');
+            
+            // Clear search input
+            document.getElementById('searchInput').value = '';
             
             // Update nav buttons with modern styling
             document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -754,6 +827,7 @@
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('catalogPage').classList.add('hidden');
             document.getElementById('booksPage').classList.remove('hidden');
+            document.getElementById('searchPage').classList.add('hidden');
             
             // Update title
             document.getElementById('categoryTitle').textContent = `Kategori ${category} - ${categoryNames[category]}`;
@@ -786,8 +860,120 @@
             window.open(url, '_blank', 'noopener,noreferrer');
         }
 
+        // Search functionality
+        function searchBooks() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            
+            if (searchTerm.length < 2) {
+                return; // Don't search for very short terms
+            }
+            
+            showSearchResults(searchTerm);
+        }
+
+        function showSearchResults(searchTerm) {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('catalogPage').classList.add('hidden');
+            document.getElementById('booksPage').classList.add('hidden');
+            document.getElementById('searchPage').classList.remove('hidden');
+            
+            // Update search page content
+            document.getElementById('searchTitle').textContent = `Hasil Pencarian: "${searchTerm}"`;
+            document.getElementById('searchSubtitle').textContent = `Menampilkan hasil pencarian untuk "${searchTerm}"`;
+            document.getElementById('advancedSearchInput').value = searchTerm;
+            
+            performAdvancedSearch();
+        }
+
+        function performAdvancedSearch() {
+            const searchTerm = document.getElementById('advancedSearchInput').value.toLowerCase().trim();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            
+            let allBooks = [];
+            
+            // Collect all books from all categories
+            Object.keys(booksData).forEach(category => {
+                if (!categoryFilter || category === categoryFilter) {
+                    booksData[category].forEach(book => {
+                        allBooks.push({
+                            ...book,
+                            category: category,
+                            categoryName: categoryNames[category]
+                        });
+                    });
+                }
+            });
+            
+            // Filter books based on search term
+            let filteredBooks = allBooks;
+            if (searchTerm) {
+                filteredBooks = allBooks.filter(book => 
+                    book.title.toLowerCase().includes(searchTerm) ||
+                    book.author.toLowerCase().includes(searchTerm) ||
+                    book.description.toLowerCase().includes(searchTerm) ||
+                    book.categoryName.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displaySearchResults(filteredBooks);
+        }
+
+        function displaySearchResults(books) {
+            const searchResults = document.getElementById('searchResults');
+            const noResults = document.getElementById('noResults');
+            
+            if (books.length === 0) {
+                searchResults.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                return;
+            }
+            
+            searchResults.classList.remove('hidden');
+            noResults.classList.add('hidden');
+            
+            searchResults.innerHTML = books.map((book, index) => `
+                <div class="card-modern rounded-3xl overflow-hidden shadow-2xl fade-in group" style="animation-delay: ${index * 0.1}s">
+                    <div class="book-spine h-3"></div>
+                    <div class="p-8">
+                        <div class="mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <div class="inline-block bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                ${book.category} - ${book.categoryName}
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold gradient-text mb-3 leading-tight">${book.title}</h3>
+                        <p class="text-indigo-600 font-semibold mb-4 text-lg">oleh ${book.author}</p>
+                        <p class="text-gray-600 mb-6 leading-relaxed font-light">${book.description}</p>
+                        <button onclick="openFlipbook('${book.flipbook}')" class="w-full btn-modern text-white px-6 py-4 rounded-2xl font-bold shadow-xl neon-glow">
+                            ✨ Baca Sekarang
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Handle Enter key in search inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const searchTerm = this.value.trim();
+                    if (searchTerm.length >= 2) {
+                        showSearchResults(searchTerm);
+                    }
+                }
+            });
+            
+            document.getElementById('advancedSearchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performAdvancedSearch();
+                }
+            });
+        });
+
         // Initialize with home page
         showHome();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98c3c41e5287283c',t:'MTc2MDA3NDY0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98dba67991fc7550',t:'MTc2MDMyNTA5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
