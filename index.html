@@ -277,7 +277,7 @@
                 <div class="flex items-center">
                     <div class="flex items-center space-x-3">
                         <div class="w-12 h-12 rounded-2xl overflow-hidden shadow-lg">
-                            <img src="https://drive.google.com/uc?export=view&id=1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo Perpustakaan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <img src="https://lh3.googleusercontent.com/d/1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo Perpustakaan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="w-12 h-12 bg-gradient-to-r from-blue-800 to-blue-900 rounded-2xl flex items-center justify-center shadow-lg" style="display: none;">
                                 <span class="text-2xl">📚</span>
                             </div>
@@ -326,8 +326,9 @@
                     <!-- Main Hero Content -->
                     <div class="glassmorphism rounded-3xl p-8 md:p-16 max-w-5xl mx-auto fade-in pulse-glow">
                         <div class="mb-8">
-                            <div class="inline-flex items-center justify-center w-24 h-24 glassmorphism rounded-3xl mb-6 bounce-in float">
-                                <span class="text-4xl">📚</span>
+                            <div class="inline-flex items-center justify-center w-24 h-24 glassmorphism rounded-3xl mb-6 bounce-in float overflow-hidden">
+                                <img src="https://lh3.googleusercontent.com/d/1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo Perpustakaan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <span class="text-4xl" style="display: none;">📚</span>
                             </div>
                         </div>
                         
@@ -706,64 +707,44 @@
         // Sample book data for each category
         const booksData = {
             '000': [
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Pengantar Ilmu Komputer', author: 'Dr. Ahmad Susanto', description: 'Buku dasar tentang konsep-konsep fundamental dalam ilmu komputer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Keamanan Siber', author: 'Ir. Maya Sari', description: 'Strategi dan teknik untuk melindungi sistem informasi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '100': [
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'Dr. PKM', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Filsafat Timur dan Barat', author: 'Prof. Bambang Sugiharto', description: 'Perbandingan pemikiran filosofis dari Timur dan Barat', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Logika dan Penalaran', author: 'Prof. Joko Sutrisno', description: 'Dasar-dasar logika untuk berpikir kritis dan sistematis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '200': [
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Studi Perbandingan Agama', author: 'Dr. Abdul Rahman', description: 'Kajian mendalam tentang berbagai tradisi keagamaan dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Teologi Kontemporer', author: 'Dr. Azyumardi Azra', description: 'Pemikiran teologis dalam konteks zaman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '300': [
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Sosiologi Indonesia', author: 'Prof. Parsudi Suparlan', description: 'Analisis struktur dan dinamika masyarakat Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Politik dan Demokrasi', author: 'Dr. Rizal Mallarangeng', description: 'Dinamika politik dan demokratisasi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '400': [
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Linguistik Umum', author: 'Prof. Harimurti Kridalaksana', description: 'Pengantar komprehensif ilmu bahasa dan linguistik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Kamus Etimologi', author: 'Dr. Gorys Keraf', description: 'Penelusuran asal-usul kata dalam bahasa Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '500': [
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Fisika Kuantum', author: 'Prof. Terry Mart', description: 'Pengantar dunia fisika kuantum dan aplikasinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Matematika Diskrit', author: 'Dr. Rinaldi Munir', description: 'Konsep matematika untuk ilmu komputer dan informatika', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '600': [
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Kedokteran Tropis', author: 'Prof. Ali Sulaiman', description: 'Penanganan penyakit-penyakit daerah tropis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Manajemen Industri', author: 'Prof. Rhenald Kasali', description: 'Strategi pengelolaan industri di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '700': [
-                { title: 'Cipta Lagu part 1', author: 'siswa-siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu part 1 Buku Karya siswa-siswi SMPK PENABUR Kota Modern', flipbook: 'https://heyzine.com/flip-book/4c54073f47.html' },
-                { title: 'cipta lagu part 2', author: 'siswa-siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu part 1 Buku Karya siswa-siswi SMPK PENABUR Kota Modern', flipbook: 'https://heyzine.com/flip-book/d6220a366e.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Cipta Lagu Part 1', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu Part 1 Kumpulan lagu karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://anyflip.com/rfnzp/xwxa/' },
+                { title: 'Cipta Lagu Part 2', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu Part 2 Kumpulan lagu karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://anyflip.com/rfnzp/zecj/' }
             ],
             '800': [
-                { title: 'Roro Jonggrang', author: 'Buku Karya siswa-siswi', description: 'Bandung Bondowosi jatuh cinta pada Roro Jonggrang, namun Roro Jonggrang membencinya karena membunuh ayahnya dan mempermainkannya', flipbook: 'https://online.fliphtml5.com/pkmeunoia/iirx/#p=1' },
-                { title: 'Batu Gantung', author: 'Siswa-siswi SMPK PENABUR Kota Modern', description: 'Buku Karya siswa-siswi', flipbook: 'https://online.fliphtml5.com/pkmeunoia/iddp/#p=1' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Sastra Indonesia Modern', author: 'Prof. Sapardi Djoko Damono', description: 'Perkembangan sastra Indonesia abad ke-20', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Kritik Sastra', author: 'Prof. Rachmat Djoko Pradopo', description: 'Pendekatan dan metode dalam kritik sastra', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ],
             '900': [
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'YUK UPLOAD', author: 'YUK UPLOAD', description: 'Buku Karya siswa-siswi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Sejarah Indonesia', author: 'Prof. Sartono Kartodirdjo', description: 'Perjalanan bangsa Indonesia dari masa ke masa', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
+                { title: 'Arkeologi Nusantara', author: 'Dr. Mundardjito', description: 'Penemuan dan penelitian arkeologi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
             ]
         };
 
@@ -975,5 +956,5 @@
         // Initialize with home page
         showHome();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98dba67991fc7550',t:'MTc2MDMyNTA5My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98dc06d9b55f4ad6',t:'MTc2MDMyOTA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
