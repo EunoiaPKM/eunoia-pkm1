@@ -1015,5 +1015,45 @@
 })();
 </script>
 <!-- End visitor tracking script -->
+    ...
+<!-- script lain di atas -->
+
+<!-- Tambahkan kode ini di paling bawah -->
+<script>
+(function(){
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxE32E0JD0Velw4vPCjmEE5527_wdjdH5GshvPauMkO4KntPOor5fv4HfBrVd93-seYSw/exec';
+  const SECRET = 'S3CRET_2025';
+
+  let visitorName = localStorage.getItem('visitorName');
+  if (!visitorName) {
+    visitorName = prompt('Masukkan nama Anda:');
+    if (visitorName) localStorage.setItem('visitorName', visitorName);
+  }
+
+  const payload = {
+    secret: SECRET,
+    url: location.href,
+    referrer: document.referrer || '',
+    userAgent: navigator.userAgent || '',
+    lang: navigator.language || '',
+    screen: `${screen.width}x${screen.height}`,
+    timezone: new Date().getTimezoneOffset(),
+    name: visitorName || 'Anonymous'
+  };
+
+  console.log("Mengirim data ke Google Script:", payload); // debug
+
+  fetch(ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    mode: "no-cors"
+  }).then(() => console.log("✅ Data dikirim"))
+    .catch(err => console.error("❌ Error:", err));
+})();
+</script>
+</body>
+</html>
+
 </body>
 </html>
