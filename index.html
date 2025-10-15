@@ -961,14 +961,18 @@
         showHome();
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98dc06d9b55f4ad6',t:'MTc2MDMyOTA0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<!-- Visitor tracking script: sends data to your Google Apps Script web app -->
+<!-- Visitor tracking script with name input -->
 <script>
 (function(){
-  // GANTI jika perlu: URL Google Apps Script (endpoint kamu)
   const ENDPOINT = 'https://script.google.com/macros/s/AKfycbzPwHB5V4jVyIWJwwSBAxUm_4fT7WA_tGK8JZilzLGRCWfGdzUcDVMB9faQ01Un8f6SsA/exec';
-
-  // GANTI agar cocok dengan secret di Apps Script mu
   const SECRET = 'S3CRET_2025';
+
+  // tanya nama pengunjung (disimpan di localStorage biar gak muncul terus)
+  let visitorName = localStorage.getItem('visitorName');
+  if (!visitorName) {
+    visitorName = prompt('Masukkan nama Anda:');
+    if (visitorName) localStorage.setItem('visitorName', visitorName);
+  }
 
   const payload = {
     secret: SECRET,
@@ -976,37 +980,35 @@
     referrer: document.referrer || '',
     userAgent: navigator.userAgent || '',
     lang: navigator.language || '',
-    screen: (screen.width || '') + 'x' + (screen.height || ''),
-    timezone: new Date().getTimezoneOffset()
+    screen: `${screen.width}x${screen.height}`,
+    timezone: new Date().getTimezoneOffset(),
+    name: visitorName || 'Anonymous'
   };
 
   function send() {
-    try {
-      fetch(ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        mode: 'cors'
-      }).catch(function(e){
-        /* ignore network errors silently */
-        console.debug('tracking send error', e);
-      });
-    } catch (e) {
-      console.debug('tracking exception', e);
-    }
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'cors'
+    }).catch(console.error);
   }
 
   if (navigator.geolocation) {
-    var fallback = setTimeout(send, 3000);
-    navigator.geolocation.getCurrentPosition(function(pos){
-      clearTimeout(fallback);
-      payload.lat = pos.coords.latitude;
-      payload.lng = pos.coords.longitude;
-      send();
-    }, function(err){
-      clearTimeout(fallback);
-      send();
-    }, { timeout: 2000 });
+    const fallback = setTimeout(send, 3000);
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        clearTimeout(fallback);
+        payload.lat = pos.coords.latitude;
+        payload.lng = pos.coords.longitude;
+        send();
+      },
+      () => {
+        clearTimeout(fallback);
+        send();
+      },
+      { timeout: 2000 }
+    );
   } else {
     send();
   }
