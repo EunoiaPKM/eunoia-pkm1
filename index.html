@@ -280,6 +280,23 @@
                 transform: translateY(0); 
             }
         }
+        
+        .slide-down-expand {
+            animation: slideDownExpand 0.5s ease-out;
+        }
+        
+        @keyframes slideDownExpand {
+            from { 
+                opacity: 0; 
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+            to { 
+                opacity: 1; 
+                max-height: 300px;
+                transform: translateY(0);
+            }
+        }
 
     </style>
   <style>@view-transition { navigation: auto; }</style>
@@ -321,15 +338,20 @@
      <div class="text-center relative z-10"><!-- Floating Elements -->
       <div class="absolute -top-10 -left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full blur-xl float stagger-1"></div>
       <div class="absolute -top-5 -right-5 w-16 h-16 bg-pink-300 bg-opacity-20 rounded-full blur-lg float stagger-2"></div>
-      <div class="absolute top-20 left-1/4 w-12 h-12 bg-yellow-300 bg-opacity-15 rounded-full blur-md float stagger-3"></div><!-- Music Recommendation Banner -->
-      <div class="glassmorphism rounded-2xl p-4 mb-6 max-w-5xl mx-auto music-banner">
-       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3"><span class="text-3xl">🎵</span>
-         <div class="text-left">
-          <p class="text-white font-bold text-base md:text-lg">Tingkatkan Pengalaman Membaca Anda</p>
-          <p class="text-white text-sm opacity-90">Putar musik latar yang menenangkan sambil menjelajahi koleksi perpustakaan kami</p>
+      <div class="absolute top-20 left-1/4 w-12 h-12 bg-yellow-300 bg-opacity-15 rounded-full blur-md float stagger-3"></div><!-- Music Player Section -->
+      <div class="glassmorphism rounded-2xl p-6 mb-6 max-w-5xl mx-auto music-banner">
+       <div class="flex flex-col items-center gap-4">
+        <div class="flex items-center gap-3 mb-2"><span class="text-3xl">🎵</span>
+         <div class="text-center">
+          <p class="text-white font-bold text-base md:text-lg">Musik Latar untuk Membaca</p>
+          <p class="text-white text-sm opacity-90">Putar musik yang menenangkan sambil menjelajahi perpustakaan</p>
          </div>
-        </div><button onclick="openMusic()" class="bg-white text-blue-800 hover:bg-blue-50 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 whitespace-nowrap"> 🎧 Putar Musik Sekarang </button>
+        </div><!-- Music Player Toggle Button --> <button id="toggleMusicBtn" onclick="toggleMusicPlayer()" class="bg-white text-blue-800 hover:bg-blue-50 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"> 🎧 Tampilkan Pemutar Musik </button> <!-- YouTube Music Player (Hidden by default) -->
+        <div id="musicPlayerContainer" class="hidden w-full mt-4 slide-down-expand">
+         <div class="bg-white bg-opacity-10 rounded-xl p-4"><iframe id="youtubePlayer" width="100%" height="200" src="https://www.youtube.com/embed/OErndIcI8gE?enablejsapi=1&amp;autoplay=0&amp;loop=1&amp;playlist=OErndIcI8gE" title="Background Music" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="rounded-lg"></iframe>
+          <p class="text-white text-xs text-center mt-2 opacity-75">📌 Klik tombol play di atas untuk memulai musik latar</p>
+         </div>
+        </div>
        </div>
       </div><!-- Main Hero Content -->
       <div class="glassmorphism rounded-3xl p-6 md:p-16 max-w-5xl mx-auto fade-in pulse-glow">
@@ -730,6 +752,20 @@
             '900': 'Sejarah & Geografi'
         };
 
+        // Music player toggle function
+        function toggleMusicPlayer() {
+            const container = document.getElementById('musicPlayerContainer');
+            const btn = document.getElementById('toggleMusicBtn');
+            
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                btn.textContent = '🎵 Sembunyikan Pemutar Musik';
+            } else {
+                container.classList.add('hidden');
+                btn.textContent = '🎧 Tampilkan Pemutar Musik';
+            }
+        }
+
         function showHome() {
             document.getElementById('homePage').classList.remove('hidden');
             document.getElementById('catalogPage').classList.add('hidden');
@@ -811,10 +847,6 @@
 
         function openFlipbook(url) {
             window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        function openMusic() {
-            window.open('https://www.youtube.com/watch?v=OErndIcI8gE&list=RDOErndIcI8gE&start_radio=1', '_blank', 'noopener,noreferrer');
         }
 
         // Search functionality
@@ -932,5 +964,5 @@
         // Initialize with home page
         showHome();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99cb078d665ae787',t:'MTc2MjgzNTE2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99cb1584311ddf74',t:'MTc2MjgzNTczOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
