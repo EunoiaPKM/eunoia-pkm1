@@ -346,7 +346,7 @@
        </div>
        <h1 class="text-5xl md:text-7xl font-black mb-6 slide-in-left"><span class="block">Selamat Datang di</span> <span class="block bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">Perpustakaan Digital</span></h1>
        <p class="text-xl md:text-2xl mb-10 opacity-95 slide-in-right stagger-2 font-light leading-relaxed max-w-3xl mx-auto">Jelajahi ribuan koleksi buku digital dengan teknologi terdepan. Nikmati pengalaman membaca yang tak terlupakan dengan interface modern dan intuitif.</p>
-       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center bounce-in stagger-3"><button onclick="showCatalog()" class="btn-yellow text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-2xl pulse-button"> ✨ Mulai Jelajahi Sekarang </button> <button class="glassmorphism text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-all duration-300"> 🎯 Pelajari Lebih Lanjut </button>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center bounce-in stagger-3"><button onclick="showCatalog()" class="btn-yellow text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-2xl pulse-button"> ✨ Mulai Jelajahi Sekarang </button> <button onclick="showAbout()" class="glassmorphism text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-all duration-300"> 🎯 Pelajari Lebih Lanjut </button>
        </div>
       </div><!-- Music Player Section (Below Buttons) -->
       <div class="glassmorphism rounded-2xl p-6 mt-8 max-w-5xl mx-auto music-banner">
@@ -648,6 +648,142 @@
     <div id="booksList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Books will be populated here -->
     </div>
    </div>
+  </div><!-- About Page -->
+  <div id="aboutPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mb-12"><button onclick="showHome()" class="glassmorphism text-indigo-600 hover:text-white hover:bg-indigo-600 px-6 py-3 rounded-2xl mb-6 flex items-center font-semibold transition-all duration-300 shadow-lg"> ← Kembali ke Home </button>
+     <h1 class="text-5xl md:text-6xl font-black gradient-text mb-6">Tentang Perpustakaan</h1>
+     <p class="text-gray-600 text-xl font-light">Informasi lengkap tentang Perpustakaan Digital Universitas Nusantara</p>
+    </div><!-- Profile Section -->
+    <div class="card-modern rounded-3xl p-8 md:p-12 mb-8 shadow-2xl">
+     <div class="flex flex-col md:flex-row gap-8 items-center">
+      <div class="w-32 h-32 rounded-3xl overflow-hidden shadow-xl flex-shrink-0"><img src="https://lh3.googleusercontent.com/d/1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo Perpustakaan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+       <div class="w-32 h-32 bg-gradient-to-r from-blue-800 to-blue-900 rounded-3xl flex items-center justify-center shadow-xl" style="display: none;"><span class="text-6xl">📚</span>
+       </div>
+      </div>
+      <div class="flex-1 text-center md:text-left">
+       <h2 class="text-4xl font-black gradient-text mb-4">Perpustakaan Digital Universitas Nusantara</h2>
+       <p class="text-gray-600 text-lg leading-relaxed">Perpustakaan Digital Universitas Nusantara adalah pusat sumber belajar yang menyediakan akses ke ribuan koleksi buku digital berkualitas tinggi. Dengan teknologi terdepan dan interface yang intuitif, kami berkomitmen untuk mendukung kegiatan akademik dan penelitian sivitas akademika.</p>
+      </div>
+     </div>
+    </div><!-- Contact Information -->
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+     <div class="rounded-3xl p-8 shadow-2xl bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white hover:shadow-3xl transition-all duration-500 hover:scale-105">
+      <div class="flex items-center mb-6">
+       <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mr-4"><span class="text-3xl">📞</span>
+       </div>
+       <h3 class="text-2xl font-bold text-white">Kontak Kami</h3>
+      </div>
+      <div class="space-y-4">
+       <div class="flex items-start"><span class="text-2xl mr-3">📧</span>
+        <div>
+         <p class="font-semibold text-white">Email</p><a href="mailto:perpustakaan@universitasnusantara.ac.id" class="text-white hover:text-white transition-colors">perpustakaan@universitasnusantara.ac.id</a>
+        </div>
+       </div>
+       <div class="flex items-start"><span class="text-2xl mr-3">☎️</span>
+        <div>
+         <p class="font-semibold text-white">Telepon</p><a href="tel:+622112345678" class="text-white hover:text-white transition-colors">+62 21 1234 5678</a>
+        </div>
+       </div>
+       <div class="flex items-start"><span class="text-2xl mr-3">📱</span>
+        <div>
+         <p class="font-semibold text-white">WhatsApp</p><a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="text-white hover:text-white transition-colors">+62 812 3456 7890</a>
+        </div>
+       </div>
+       <div class="flex items-start"><span class="text-2xl mr-3">🌐</span>
+        <div>
+         <p class="font-semibold text-white">Website</p><a href="https://perpustakaan.universitasnusantara.ac.id" target="_blank" rel="noopener noreferrer" class="text-white hover:text-white transition-colors">perpustakaan.universitasnusantara.ac.id</a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="rounded-3xl p-8 shadow-2xl bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white hover:shadow-3xl transition-all duration-500 hover:scale-105">
+      <div class="flex items-center mb-6">
+       <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mr-4"><span class="text-3xl">🕒</span>
+       </div>
+       <h3 class="text-2xl font-bold text-white">Jam Operasional</h3>
+      </div>
+      <div class="space-y-3">
+       <div class="flex justify-between items-center py-2 border-b border-white border-opacity-30"><span class="font-semibold text-white">Senin - Jumat</span> <span class="text-white font-bold">08:00 - 20:00 WIB</span>
+       </div>
+       <div class="flex justify-between items-center py-2 border-b border-white border-opacity-30"><span class="font-semibold text-white">Sabtu</span> <span class="text-white font-bold">09:00 - 17:00 WIB</span>
+       </div>
+       <div class="flex justify-between items-center py-2 border-b border-white border-opacity-30"><span class="font-semibold text-white">Minggu &amp; Libur</span> <span class="text-red-500 font-bold">Tutup</span>
+       </div>
+       <div class="mt-6 bg-white bg-opacity-20 p-4 rounded-xl">
+        <p class="text-sm text-white"><span class="font-bold text-blue-100">📱 Akses Digital 24/7:</span> Platform digital dapat diakses kapan saja, dimana saja!</p>
+       </div>
+      </div>
+     </div>
+    </div><!-- Location Section -->
+    <div class="rounded-3xl p-8 shadow-2xl mb-8 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white hover:shadow-3xl transition-all duration-500 hover:scale-105">
+     <div class="flex items-center mb-6">
+      <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mr-4"><span class="text-3xl">📍</span>
+      </div>
+      <h3 class="text-2xl font-bold text-white">Lokasi Kami</h3>
+     </div>
+     <div class="mb-6">
+      <p class="text-white text-lg leading-relaxed mb-2"><strong>Alamat:</strong> Jl. Pendidikan No. 123, Kampus Universitas Nusantara</p>
+      <p class="text-white text-lg leading-relaxed mb-2">Jakarta Selatan, DKI Jakarta 12345</p>
+      <p class="text-white text-lg leading-relaxed">Gedung Perpustakaan Pusat, Lantai 1-5</p>
+     </div><!-- Google Maps Embed -->
+     <div class="rounded-2xl overflow-hidden shadow-xl"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2087116569344!2d106.82493631476894!3d-6.233566395496632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf2ea464d0d!2sUniversitas%20Indonesia!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full"></iframe>
+     </div>
+     <div class="mt-6 flex flex-col sm:flex-row gap-4"><a href="https://maps.app.goo.gl/rjWDmkuaemGUefeaA" target="_blank" rel="noopener noreferrer" class="flex-1 bg-white bg-opacity-20 text-white px-6 py-3 rounded-xl text-center font-semibold hover:bg-opacity-30 hover:shadow-xl transition-all duration-300 hover:scale-105"> 🗺️ Buka di Google Maps </a> <a href="https://maps.app.goo.gl/rjWDmkuaemGUefeaA" target="_blank" rel="noopener noreferrer" class="flex-1 bg-white bg-opacity-20 text-white px-6 py-3 rounded-xl text-center font-semibold hover:bg-opacity-30 hover:shadow-xl transition-all duration-300 hover:scale-105"> 🚗 Petunjuk Arah </a>
+     </div>
+    </div><!-- Facilities Section -->
+    <div class="rounded-3xl p-8 shadow-2xl bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 text-white hover:shadow-3xl transition-all duration-500 hover:scale-105">
+     <div class="flex items-center mb-6">
+      <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center mr-4"><span class="text-3xl">🏢</span>
+      </div>
+      <h3 class="text-2xl font-bold text-white">Fasilitas Perpustakaan</h3>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-gradient-to-br from-red-500 via-red-600 to-pink-600 p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+       <div class="text-4xl mb-3">
+        💻
+       </div>
+       <h4 class="font-bold text-white mb-2">Ruang Komputer</h4>
+       <p class="text-white text-opacity-90 text-sm">50+ unit komputer dengan akses internet berkecepatan tinggi</p>
+      </div>
+      <div class="bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+       <div class="text-4xl mb-3">
+        📖
+       </div>
+       <h4 class="font-bold text-white mb-2">Ruang Baca</h4>
+       <p class="text-white text-opacity-90 text-sm">Area baca yang nyaman dengan kapasitas 200 orang</p>
+      </div>
+      <div class="bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+       <div class="text-4xl mb-3">
+        🎧
+       </div>
+       <h4 class="font-bold text-white mb-2">Ruang Audio Visual</h4>
+       <p class="text-white text-opacity-90 text-sm">Fasilitas multimedia untuk pembelajaran interaktif</p>
+      </div>
+      <div class="bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+       <div class="text-4xl mb-3">
+        👥
+       </div>
+       <h4 class="font-bold text-white mb-2">Ruang Diskusi</h4>
+       <p class="text-white text-opacity-90 text-sm">10 ruang diskusi untuk belajar kelompok</p>
+      </div>
+      <div class="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+       <div class="text-4xl mb-3">
+        ☕
+       </div>
+       <h4 class="font-bold text-white mb-2">Cafeteria</h4>
+       <p class="text-white text-opacity-90 text-sm">Area santai dengan berbagai pilihan makanan dan minuman</p>
+      </div>
+      <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 p-6 rounded-2xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+       <div class="text-4xl mb-3">
+        🌡️
+       </div>
+       <h4 class="font-bold text-white mb-2">AC &amp; WiFi</h4>
+       <p class="text-white text-opacity-90 text-sm">Ruangan ber-AC dengan WiFi gratis berkecepatan tinggi</p>
+      </div>
+     </div>
+    </div>
+   </div>
   </div><!-- Search Results Page -->
   <div id="searchPage" class="hidden fade-in bg-gradient-to-br from-gray-50 via-white to-indigo-50 min-h-screen">
    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -771,6 +907,7 @@
             document.getElementById('catalogPage').classList.add('hidden');
             document.getElementById('booksPage').classList.add('hidden');
             document.getElementById('searchPage').classList.add('hidden');
+            document.getElementById('aboutPage').classList.add('hidden');
             
             // Clear search input
             document.getElementById('searchInput').value = '';
@@ -786,11 +923,23 @@
             }
         }
 
+        function showAbout() {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('catalogPage').classList.add('hidden');
+            document.getElementById('booksPage').classList.add('hidden');
+            document.getElementById('searchPage').classList.add('hidden');
+            document.getElementById('aboutPage').classList.remove('hidden');
+            
+            // Scroll to top of the page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function showCatalog() {
             document.getElementById('homePage').classList.add('hidden');
             document.getElementById('catalogPage').classList.remove('hidden');
             document.getElementById('booksPage').classList.add('hidden');
             document.getElementById('searchPage').classList.add('hidden');
+            document.getElementById('aboutPage').classList.add('hidden');
             
             // Clear search input
             document.getElementById('searchInput').value = '';
@@ -814,6 +963,7 @@
             document.getElementById('catalogPage').classList.add('hidden');
             document.getElementById('booksPage').classList.remove('hidden');
             document.getElementById('searchPage').classList.add('hidden');
+            document.getElementById('aboutPage').classList.add('hidden');
             
             // Scroll to top of the page
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -865,6 +1015,7 @@
             document.getElementById('catalogPage').classList.add('hidden');
             document.getElementById('booksPage').classList.add('hidden');
             document.getElementById('searchPage').classList.remove('hidden');
+            document.getElementById('aboutPage').classList.add('hidden');
             
             // Update search page content
             document.getElementById('searchTitle').textContent = `Hasil Pencarian: "${searchTerm}"`;
@@ -964,5 +1115,5 @@
         // Initialize with home page
         showHome();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d1e28b10ecea83',t:'MTc2MjkwNzA1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99d20b8215c0df97',t:'MTc2MjkwODcyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
