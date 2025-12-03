@@ -344,7 +344,7 @@
         <div class="inline-flex items-center justify-center w-24 h-24 glassmorphism rounded-3xl mb-6 bounce-in float overflow-hidden"><img src="https://lh3.googleusercontent.com/d/1a8y6LjZ7yT4JWm3iWYQdbqARgdMaUlWA" alt="Logo Perpustakaan" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"> <span class="text-4xl" style="display: none;">📚</span>
         </div>
        </div>
-       <h1 class="text-5xl md:text-7xl font-black mb-6 slide-in-left"><span class="block">Selamat Datang di</span> <span class="block bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">Website Hose</span></h1>
+       <h1 class="text-5xl md:text-7xl font-black mb-6 slide-in-left"><span class="block">Selamat Datang di</span> <span class="block bg-gradient-to-r from-white via-pink-200 to-white bg-clip-text text-transparent">Perpustakaan Eunonia</span></h1>
        <p class="text-xl md:text-2xl mb-10 opacity-95 slide-in-right stagger-2 font-light leading-relaxed max-w-3xl mx-auto">Jelajahi koleksi buku digital dengan teknologi terdepan. Nikmati pengalaman membaca yang tak terlupakan dengan interface modern dan intuitif.</p>
        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center bounce-in stagger-3"><button onclick="showCatalog()" class="btn-yellow text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-2xl pulse-button"> ✨ Mulai Jelajahi Sekarang </button> <button onclick="showAbout()" class="glassmorphism text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-all duration-300"> 🎯 Pelajari Lebih Lanjut </button>
        </div>
@@ -481,7 +481,7 @@
      <div class="grid md:grid-cols-4 gap-8">
       <div class="text-center stats-card p-8 rounded-3xl fade-in stagger-1 neon-glow">
        <div class="text-5xl font-black text-white mb-4 bounce-in">
-        10,000+
+        100+
        </div>
        <div class="text-white text-lg font-semibold opacity-90">
         Koleksi Buku Digital
@@ -723,9 +723,9 @@
       <h3 class="text-2xl font-bold text-white">Lokasi Kami</h3>
      </div>
      <div class="mb-6">
-      <p class="text-white text-lg leading-relaxed mb-2"><strong>Alamat:</strong> Jl. Medan Merdeka Barat No.12</p>
-      <p class="text-white text-lg leading-relaxed mb-2">Gambir, Jakarta Pusat, DKI Jakarta 10110</p>
-      <p class="text-white text-lg leading-relaxed">Dekat Monas dan Stasiun Gambir</p>
+      <p class="text-white text-lg leading-relaxed mb-2"><strong>Alamat:</strong> Jl. </p>
+      <p class="text-white text-lg leading-relaxed mb-2">Jl. Honoris Raya No.10, Klp. Indah, Kec. Tangerang, Kota Tangerang, Banten 15117</p>
+      <p class="text-white text-lg leading-relaxed">Dekat Mayapada Hospital Tangerang</p>
      </div><!-- Google Maps Embed -->
      <div class="rounded-2xl overflow-hidden shadow-xl"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d290.198598129745!2d106.6390421046619!3d-6.207368335531975!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb2ed4a14383%3A0x6de664bfd2e6d8a1!2sSMPK%20PENABUR%20Kota%20Modern!5e0!3m2!1sen!2sid!4v1762918772470!5m2!1sen!2sid" width="100%" height="400" style="border:0;" allowfullscreen loading="eager" referrerpolicy="no-referrer-when-downgrade" class="w-full"></iframe>
      </div>
@@ -814,64 +814,44 @@
         // Sample book data for each category
         const booksData = {
             '000': [
-                { title: 'Pengantar Ilmu Komputer', author: 'Dr. Ahmad Susanto', description: 'Buku dasar tentang konsep-konsep fundamental dalam ilmu komputer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Algoritma dan Pemrograman', author: 'Prof. Siti Nurhaliza', description: 'Panduan lengkap algoritma dan teknik pemrograman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Basis Data Terdistribusi', author: 'Dr. Budi Raharjo', description: 'Konsep dan implementasi sistem basis data terdistribusi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Keamanan Siber', author: 'Ir. Maya Sari', description: 'Strategi dan teknik untuk melindungi sistem informasi', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Majalah Cipta Edisi 2024/2025', author: 'Osis SMPK PENABUR Kota Modern', description: 'Majalah Siswa', flipbook: 'https://online.fliphtml5.com/KUBUS/jprx/#p=1' },
+
             ],
             '100': [
-                { title: 'Filsafat Timur dan Barat', author: 'Prof. Bambang Sugiharto', description: 'Perbandingan pemikiran filosofis dari Timur dan Barat', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Etika dalam Kehidupan', author: 'Dr. Ratna Megawangi', description: 'Panduan praktis menerapkan etika dalam kehidupan sehari-hari', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Psikologi Positif', author: 'Dr. Eko Handayani', description: 'Memahami kekuatan pikiran untuk kehidupan yang lebih baik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Logika dan Penalaran', author: 'Prof. Joko Sutrisno', description: 'Dasar-dasar logika untuk berpikir kritis dan sistematis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+
             ],
             '200': [
-                { title: 'Studi Perbandingan Agama', author: 'Dr. Abdul Rahman', description: 'Kajian mendalam tentang berbagai tradisi keagamaan dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Spiritualitas Modern', author: 'Ustadz Yusuf Mansur', description: 'Menggali makna spiritualitas di era kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Sejarah Agama-Agama', author: 'Prof. Maria Ulfah', description: 'Perjalanan sejarah perkembangan agama-agama besar dunia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Teologi Kontemporer', author: 'Dr. Azyumardi Azra', description: 'Pemikiran teologis dalam konteks zaman modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+ 
             ],
             '300': [
-                { title: 'Sosiologi Indonesia', author: 'Prof. Parsudi Suparlan', description: 'Analisis struktur dan dinamika masyarakat Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Ekonomi Pembangunan', author: 'Dr. Sri Mulyani', description: 'Teori dan praktik pembangunan ekonomi berkelanjutan', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Hukum dan Keadilan', author: 'Prof. Mahfud MD', description: 'Konsep keadilan dalam sistem hukum Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Politik dan Demokrasi', author: 'Dr. Rizal Mallarangeng', description: 'Dinamika politik dan demokratisasi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+  
             ],
             '400': [
-                { title: 'Linguistik Umum', author: 'Prof. Harimurti Kridalaksana', description: 'Pengantar komprehensif ilmu bahasa dan linguistik', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Bahasa Indonesia Baku', author: 'Dr. Dendy Sugono', description: 'Panduan penggunaan bahasa Indonesia yang baik dan benar', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Pembelajaran Bahasa Asing', author: 'Prof. Fuad Abdul Hamied', description: 'Metode efektif dalam pembelajaran bahasa asing', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Kamus Etimologi', author: 'Dr. Gorys Keraf', description: 'Penelusuran asal-usul kata dalam bahasa Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+
             ],
             '500': [
-                { title: 'Fisika Kuantum', author: 'Prof. Terry Mart', description: 'Pengantar dunia fisika kuantum dan aplikasinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Kimia Organik', author: 'Dr. Buchari', description: 'Studi mendalam tentang senyawa karbon dan reaksinya', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Biologi Molekuler', author: 'Prof. Sangkot Marzuki', description: 'Eksplorasi kehidupan di tingkat molekuler', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Matematika Diskrit', author: 'Dr. Rinaldi Munir', description: 'Konsep matematika untuk ilmu komputer dan informatika', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+
             ],
             '600': [
-                { title: 'Kedokteran Tropis', author: 'Prof. Ali Sulaiman', description: 'Penanganan penyakit-penyakit daerah tropis', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Teknik Sipil Modern', author: 'Ir. Wiratman Wangsadinata', description: 'Inovasi dalam konstruksi dan infrastruktur', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Teknologi Pangan', author: 'Dr. Made Astawan', description: 'Pengolahan dan pengawetan makanan modern', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Manajemen Industri', author: 'Prof. Rhenald Kasali', description: 'Strategi pengelolaan industri di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+        
             ],
             '700': [
-                { title: 'Seni Rupa Indonesia', author: 'Prof. Soedarso Sp', description: 'Perkembangan seni rupa dari tradisional hingga kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Musik Nusantara', author: 'Dr. Franki Raden', description: 'Kekayaan musik tradisional Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Fotografi Digital', author: 'Arbain Rambey', description: 'Teknik dan estetika fotografi di era digital', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Desain Grafis', author: 'Danton Sihombing', description: 'Prinsip dan aplikasi desain visual yang efektif', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+            
             ],
             '800': [
-                { title: 'Sastra Indonesia Modern', author: 'Prof. Sapardi Djoko Damono', description: 'Perkembangan sastra Indonesia abad ke-20', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Puisi Kontemporer', author: 'Goenawan Mohamad', description: 'Antologi puisi Indonesia kontemporer', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Novel Klasik Dunia', author: 'Dr. Melani Budianta', description: 'Analisis karya-karya sastra dunia yang berpengaruh', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Kritik Sastra', author: 'Prof. Rachmat Djoko Pradopo', description: 'Pendekatan dan metode dalam kritik sastra', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Cipta Lagu Part 1', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu Part 1 Kumpulan lagu karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/kyym/' },
+                { title: 'Cipta Lagu Part 2', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Cipta Lagu Part 2 Kumpulan lagu karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/ukkd/' }
             ],
             '900': [
-                { title: 'Sejarah Indonesia', author: 'Prof. Sartono Kartodirdjo', description: 'Perjalanan bangsa Indonesia dari masa ke masa', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Biografi Tokoh Dunia', author: 'Dr. Anhar Gonggong', description: 'Kisah hidup tokoh-tokoh berpengaruh dalam sejarah', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Geografi Indonesia', author: 'Prof. Bintarto', description: 'Kondisi geografis dan kekayaan alam Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' },
-                { title: 'Arkeologi Nusantara', author: 'Dr. Mundardjito', description: 'Penemuan dan penelitian arkeologi di Indonesia', flipbook: 'https://heyzine.com/flip-book/983fe1b355.html' }
+                { title: 'Kisah daun bawang dan bawang bombai', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'daun bawang dan bawang bombai sebuah naskah drama karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/joys/' },
+                { title: 'Roro Jonggrang', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Roro Jonggrang sebuah naskah drama karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/bdqr/' },
+                { title: 'Sudahkah kamu memeluk ibumu', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'merupakan kumpulan puisi siswa siswi kelas 9 Tahun ajaran 2020/2021', flipbook: 'https://online.fliphtml5.com/KUBUS/rwiu/#p=4' },
+                { title: 'Dua sosok yang agung', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'merupakan kumpulan puisi siswa siswi kelas 8B Tahun Ajaran 2024/2025', flipbook: 'https://online.fliphtml5.com/KUBUS/xdxi/#p=1' },
+                { title: 'Batu Gantung', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Naskah drama karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/zoqx/' },
+                { title: 'Sang Pelompat Mentari', author: 'Gilbert Giovani Anderson', description: 'Halo, namaku Gilbert. Aku memiliki hobi menggambar apa saja. Aku senang belajar untuk meningkatkan pengetahuan dan mengembangkan skill', flipbook: 'https://online.fliphtml5.com/KUBUS/swae/#p=1' },
+                { title: 'Batu Menangis', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Menangis sebuah naskah drama karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/cves/' },
+                { title: 'Laut Melvin leonhard dan beberapa cerpen lainnya', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'merupakan kumpulan cerpen siswa dan siswi', flipbook: 'https://online.fliphtml5.com/pkmeunoia/cnob/' },
+                { title: 'Joko Kendil', author: 'Siswa Siswi SMPK PENABUR Kota Modern', description: 'Joko Kendil sebuah naskah drama karya siswa siswi SMPK PENABUR Kota Modern', flipbook: 'https://online.fliphtml5.com/pkmeunoia/bzyb/' }
             ]
         };
 
